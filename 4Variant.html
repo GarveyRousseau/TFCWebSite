@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Тверское фурри комьюнити: мероприятия, суйтеры, админы и атмосфера сообщества.">
+    <meta name="title" content="TFC | Tver Furry Community">
+    <meta name="keywords" content="Furry, Tver, TFC, furmeet, suiter, community">
+    <meta name="author" content="Harvey, MarixFox">
+    <title>TFC — Community Website</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+
+    <style>
+        :root {
+            --bg: #07070b;
+            --bg-soft: #12121a;
+            --panel: #1d1e29;
+            --text: #f6f2ff;
+            --muted: #b7b1ce;
+            --accent: #f74f7a;
+            --accent-2: #48b8ff;
+            --line: rgba(255, 255, 255, 0.14);
+            --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+            --radius: 18px;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+            background: radial-gradient(circle at 10% -30%, #3b2d7a, var(--bg));
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        img { max-width: 100%; display: block; }
+
+        a { color: inherit; text-decoration: none; }
+
+        .section { padding: 4rem clamp(1rem, 4vw, 4rem); }
+
+        .title {
+            font-size: clamp(2rem, 4vw, 4rem);
+            line-height: 1;
+            margin: 0 0 1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .lead {
+            color: var(--muted);
+            max-width: 70ch;
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            isolation: isolate;
+            padding: 2rem;
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+        }
+
+        .hero::before {
+            background: url("https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat;
+            filter: saturate(1.15) contrast(1.05);
+        }
+
+        .hero::after {
+            z-index: -1;
+            background: linear-gradient(to bottom, rgba(8, 10, 19, 0.45), rgba(8, 10, 19, 0.92));
+        }
+
+        .hero-shell {
+            max-width: 980px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 28px;
+            padding: clamp(1.5rem, 4vw, 4rem);
+            background: rgba(12, 11, 18, 0.5);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+        }
+
+        .hero h1 { font-size: clamp(2.4rem, 7vw, 6.2rem); margin: 0; }
+
+        .hero p { color: #e7e2ff; margin: 1rem auto 2rem; max-width: 60ch; }
+
+        .btns { display: flex; gap: 0.9rem; flex-wrap: wrap; justify-content: center; }
+
+        .btn {
+            border: 0;
+            border-radius: 999px;
+            padding: 0.8rem 1.35rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+        }
+
+        .btn-primary { background: linear-gradient(120deg, var(--accent), #f98f4f); color: white; }
+        .btn-secondary { background: rgba(255, 255, 255, 0.12); color: white; border: 1px solid rgba(255, 255, 255, 0.3); }
+
+        .story {
+            min-height: 100vh;
+            display: grid;
+            align-items: center;
+            background: linear-gradient(145deg, #141322, #0d0e16 65%);
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .story-card {
+            padding: 2rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .story-visual {
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+        }
+
+        .slides {
+            min-height: 80vh;
+            display: grid;
+            align-items: center;
+            gap: 1rem;
+            background: var(--bg-soft);
+        }
+
+        .slides-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; }
+
+        .carousel-wrap {
+            position: relative;
+            height: min(80vh, 680px);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            pointer-events: none;
+            display: grid;
+            place-items: end start;
+            padding: 2rem;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide.active { opacity: 1; pointer-events: auto; }
+
+        .slide::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.25));
+            z-index: 0;
+        }
+
+        .slide-copy {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            padding: 1.2rem 1.5rem;
+            border-radius: 14px;
+            background: rgba(15, 15, 24, 0.68);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 0.75rem;
+            pointer-events: none;
+        }
+
+        .carousel-btn {
+            pointer-events: auto;
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            border: 0;
+            background: rgba(5, 6, 10, 0.65);
+            color: white;
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+
+        .events-grid,
+        .people-list { display: grid; gap: 1.4rem; margin-top: 1.6rem; }
+
+        .events-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 1rem 1.1rem;
+        }
+
+        .people-row {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .people-row.reverse { grid-template-columns: 1fr 280px; }
+        .people-row.reverse .polaroid,
+        .people-row.reverse .person-text { order: 2; }
+        .people-row.reverse .person-text { order: 1; }
+
+        .polaroid {
+            background: #fff;
+            border-radius: 8px;
+            padding: 0.65rem 0.65rem 1.3rem;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+            color: #111;
+        }
+
+        .polaroid img { height: 280px; width: 100%; object-fit: cover; border-radius: 4px; }
+
+        .polaroid small { display: block; margin-top: 0.6rem; font-weight: 700; text-align: center; }
+
+        .person-text {
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 1rem 1.2rem;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .aliases {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            position: relative;
+            overflow: hidden;
+            background: #090b12;
+        }
+
+        .alias-shell {
+            width: min(1200px, 94vw);
+            min-height: 60vh;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .alias-col {
+            padding: 2rem;
+            background: linear-gradient(130deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+            position: relative;
+        }
+
+        .alias-col:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: -2px;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--accent-2), transparent);
+            transform: skew(-20deg);
+        }
+
+        footer {
+            padding: 1.5rem 1rem 2rem;
+            text-align: center;
+            color: var(--muted);
+            border-top: 1px solid var(--line);
+            background: #080910;
+        }
+
+        @media (max-width: 900px) {
+            .story-grid { grid-template-columns: 1fr; }
+            .people-row,
+            .people-row.reverse { grid-template-columns: 1fr; }
+            .people-row.reverse .polaroid,
+            .people-row.reverse .person-text,
+            .people-row .polaroid,
+            .people-row .person-text { order: initial; }
+            .alias-shell { grid-template-columns: 1fr; }
+            .alias-col:not(:last-child)::after {
+                width: 100%;
+                height: 2px;
+                left: 0;
+                right: auto;
+                top: auto;
+                bottom: -1px;
+                transform: skewX(-20deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-shell">
+            <h1>Tver Furry Community</h1>
+            <p>Stylish landing concept with a cinematic intro, event carousel, suiter cards, team highlights, and signature alias split-screen.</p>
+            <div class="btns">
+                <button class="btn btn-primary">Join Telegram</button>
+                <button class="btn btn-secondary">Join Discord</button>
+            </div>
+        </div>
+    </header>
+
+  <section class="section story">
+        <div class="story-grid">
+            <div class="story-card reveal-up">
+                <h2 class="title">Our Story</h2>
+                <p class="lead">From small weekend walks to packed meetups, this community grew into a creative, warm place for artists, suiters, photographers, and curious newcomers. This block is fullscreen as requested, designed for your final text later.</p>
+            </div>
+         <div class="story-visual reveal-up">
+                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80" alt="Story visual">
+            </div>
+        </div>
+</section>
+
+    <section class="section slides">
+        <div class="slides-head">
+            <div>
+                <h2 class="title">Featured Slides</h2>
+                <p class="lead">80% viewport carousel, clickable arrows, auto-rotation, and GSAP transitions (Microsoft Store vibe).</p>
+            </div>
+ </div>
+        <div class="carousel-wrap" id="carousel">
+            <article class="slide active" style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80');">
+                <div class="slide-copy">
+                    <h3>Template Slide 01</h3>
+                    <p>Drop your main campaign, meetup teaser, or announcement in this high-impact area.</p>
+                </div>
+   </article>
+            <article class="slide" style="background-image:url('https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=1600&q=80');">
+                <div class="slide-copy">
+                    <h3>Template Slide 02</h3>
+                    <p>Use this for convention photos, social highlights, or your next event banner.</p>
+                </div>
+    </article>
+            <article class="slide" style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80');">
+                <div class="slide-copy">
+                    <h3>Template Slide 03</h3>
+                    <p>Fast to replace with final assets while keeping transitions and layout intact.</p>
+                </div>
+            </article>
+
+            <div class="carousel-nav">
+                <button class="carousel-btn" id="prevBtn" aria-label="Previous slide">‹</button>
+                <button class="carousel-btn" id="nextBtn" aria-label="Next slide">›</button>
+            </div>
+ </section>
+
+    <section class="section">
+        <h2 class="title">Events</h2>
+        <p class="lead">Text placeholders for your events and announcements.</p>
+        <div class="events-grid">
+            <article class="event-card reveal-up"><h3>City Night Walk</h3><p>Evening meetup with photos, chats, and new people.</p></article>
+            <article class="event-card reveal-up"><h3>Creative Hangout</h3><p>Sketching session + tea + character concept talks.</p></article>
+            <article class="event-card reveal-up"><h3>FurMeet Weekend</h3><p>Main monthly event with games and mini activities.</p></article>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="title">Suiters</h2>
+        <p class="lead">Polaroid style cards with name under photo and alternating left/right text flow.</p>
+        <div class="people-list">
+            <article class="people-row reveal-up">
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=700&q=80" alt="Suiter 1"><small>Nova Flashpaw</small></div>
+                <div class="person-text"><h3>Friendly energy</h3><p>Always starts the mood, welcomes newcomers, and keeps every meetup active and fun.</p></div>
+            </article>
+            <article class="people-row reverse reveal-up">
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=700&q=80" alt="Suiter 2"><small>Kiro Nighttail</small></div>
+                <div class="person-text"><h3>Performance style</h3><p>Known for expressive stage moments, high-energy interactions, and memorable photos.</p></div>
+            </article>
+        </div>
+ </section>
+
+    <section class="section">
+        <h2 class="title">Admins & Interesting People</h2>
+        <div class="people-list">
+            <article class="people-row reveal-up">
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?auto=format&fit=crop&w=700&q=80" alt="Admin 1"><small>Marix — Coordinator</small></div>
+                <div class="person-text"><h3>Community builder</h3><p>Plans routes, coordinates activities, and keeps the core spirit alive.</p></div>
+            </article>
+            <article class="people-row reverse reveal-up">
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=700&q=80" alt="Admin 2"><small>Harvey — Creative</small></div>
+                <div class="person-text"><h3>Visual direction</h3><p>Shapes style, edits media, and makes sure community pages look expressive and modern.</p></div>
+            </article>
+        </div>
+    </section>
+
+    <section class="aliases">
+        <div class="alias-shell">
+            <article class="alias-col reveal-up">
+                <h3>@northpaw</h3>
+                <p>Event lead and route scout.</p>
+            </article>
+            <article class="alias-col reveal-up">
+                <h3>@pixelmuzzle</h3>
+                <p>Photo, edits, and social posting.</p>
+            </article>
+            <article class="alias-col reveal-up">
+                <h3>@moonclaw</h3>
+                <p>Creative hosting and games.</p>
+            </article>
+        </div>
+    </section>
+
+    <footer>
+        <p>🐾 TFC — Built as a full stylish template ready for your final content.</p>
+    </footer>
+
+    <script>
+  gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from(".hero-shell", {
+            y: 80,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power3.out"
+        });
+
+        gsap.utils.toArray(".reveal-up").forEach((item, i) => {
+            gsap.from(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 85%"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.9,
+                delay: i % 3 * 0.08,
+                ease: "power2.out"
+            });
+        });
+
+        const slides = Array.from(document.querySelectorAll(".slide"));
+        const nextBtn = document.getElementById("nextBtn");
+        const prevBtn = document.getElementById("prevBtn");
+        let index = 0;
+        let autoTimer;
+
+        function showSlide(nextIndex) {
+            const current = slides[index];
+            const target = slides[nextIndex];
+            if (current === target) return;
+
+            gsap.timeline()
+                .to(current, { opacity: 0, duration: 0.35, ease: "power2.out" })
+                .set(current, { className: "slide" })
+                .set(target, { className: "slide active" })
+                .fromTo(target, { opacity: 0, scale: 1.03 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power2.out" });
+
+            index = nextIndex;
+        }
+
+        function nextSlide() {
+            showSlide((index + 1) % slides.length);
+        }
+
+        function prevSlide() {
+            showSlide((index - 1 + slides.length) % slides.length);
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoTimer);
+            autoTimer = setInterval(nextSlide, 5000);
+        }
+
+        nextBtn.addEventListener("click", () => {
+            nextSlide();
+            resetAutoPlay();
+        });
+
+        prevBtn.addEventListener("click", () => {
+            prevSlide();
+            resetAutoPlay();
+        });
+
+        resetAutoPlay();
+    </script>
+</body>
+</html>

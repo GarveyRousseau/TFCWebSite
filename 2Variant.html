@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ТФК — Тверское фурри комьюнити: сходки, ивенты, интересные люди и команды.">
+    <meta name="title" content="ТФК | Тверское Фурри Комьюнити">
+    <meta name="keywords" content="Фурри, TFC, ТФК, Тверские Фурри, события, сходки">
+    <meta name="author" content="Harvey, MarixFox">
+    <title>TFK — Community Story</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <style>
+        :root {
+            --bg: #0f1018;
+            --bg-soft: #181a27;
+            --card: #f9f7f2;
+            --card-shadow: 0 24px 40px rgba(0, 0, 0, 0.25);
+            --text: #f5efe2;
+            --text-dark: #2f2a25;
+            --accent: #ff6a3d;
+            --accent-2: #ffd38e;
+            --line: rgba(255, 255, 255, 0.2);
+            --max: 1200px;
+        }
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            background: radial-gradient(circle at 20% 10%, #1f2235, var(--bg));
+            color: var(--text);
+            font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+        }
+
+       img { max-width: 100%; display: block; }
+
+        .section-shell {
+            width: min(100% - 3rem, var(--max));
+            margin: 0 auto;
+        }
+
+        .hero-story {
+            min-height: 100vh;
+            position: relative;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-story::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(140deg, rgba(255, 106, 61, 0.35), rgba(0,0,0,0.1) 50%),
+                url("https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat;
+            filter: saturate(1.05) contrast(1.08);
+            transform: scale(1.08);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .kicker {
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            opacity: 0.85;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2.1rem, 6vw, 5rem);
+            line-height: 1.03;
+            text-wrap: balance;
+        }
+
+        .hero-content p {
+            margin: 1.2rem auto 0;
+            max-width: 68ch;
+            opacity: 0.93;
+            font-size: clamp(1rem, 1.8vw, 1.25rem);
+        }
+
+        .hero-cta {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            appearance: none;
+            border: 0;
+            border-radius: 999px;
+            padding: 0.78rem 1.35rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 10px 25px rgba(255, 106, 61, 0.4); }
+        .btn-secondary { background: rgba(255,255,255,0.14); color: #fff; border: 1px solid rgba(255,255,255,0.22); }
+
+        .slides-wrap {
+            min-height: 100vh;
+            padding: 5rem 0;
+        }
+
+        .slides-shell {
+            width: min(100% - 2rem, 1300px);
+            margin: 0 auto;
+        }
+
+        .slides-heading { margin-bottom: 1.2rem; }
+        .slides-heading h2 { margin: 0; font-size: clamp(1.6rem, 4vw, 3rem); }
+        .slides-heading p { margin: 0.5rem 0 0; opacity: 0.8; }
+
+        .carousel {
+            position: relative;
+            height: 80vh;
+            min-height: 500px;
+            max-height: 860px;
+            overflow: hidden;
+            border-radius: 26px;
+            border: 1px solid var(--line);
+            background: #111321;
+        }
+
+        .slides-track {
+            height: 100%;
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+        .slides-track::-webkit-scrollbar { display: none; }
+
+        .slide {
+            position: relative;
+            scroll-snap-align: start;
+            display: grid;
+            align-items: end;
+            padding: clamp(1.3rem, 3vw, 2.5rem);
+            isolation: isolate;
+        }
+
+        .slide::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.05);
+        }
+
+        .slide::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.1));
+            z-index: -1;
+        }
+
+        .slide-1::before { background-image: url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1600&q=80"); }
+        .slide-2::before { background-image: url("https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1600&q=80"); }
+        .slide-3::before { background-image: url("https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=1600&q=80"); }
+
+        .slide-content h3 { margin: 0; font-size: clamp(1.4rem, 3vw, 2.6rem); }
+        .slide-content p { margin: 0.55rem 0 0; max-width: 60ch; }
+
+        .carousel-controls {
+            position: absolute;
+            z-index: 4;
+            inset: auto 1rem 1rem auto;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .ctrl {
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .events {
+            padding: 5rem 0 2.5rem;
+        }
+
+        .events-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+
+        .event-box {
+            background: linear-gradient(180deg, #1e2031, #171825);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 16px;
+            padding: 1.1rem;
+        }
+
+        .event-box h4 { margin: 0 0 0.4rem; color: var(--accent-2); }
+        .event-box p { margin: 0; opacity: 0.88; }
+
+        .people {
+            padding: 4.5rem 0;
+        }
+
+        .people h2 {
+            font-size: clamp(1.5rem, 3.2vw, 2.7rem);
+            margin: 0 0 1.4rem;
+        }
+
+        .person-row {
+            display: flex;
+            gap: clamp(1rem, 3vw, 2rem);
+            margin-bottom: 1.8rem;
+            align-items: flex-start;
+        }
+
+        .person-row.reverse { flex-direction: row-reverse; }
+
+        .polaroid {
+            width: min(320px, 95%);
+            background: var(--card);
+            color: var(--text-dark);
+            border-radius: 8px;
+            padding: 0.9rem 0.9rem 1.6rem;
+            box-shadow: var(--card-shadow);
+            transform: rotate(-2deg);
+            flex-shrink: 0;
+        }
+
+        .person-row.reverse .polaroid { transform: rotate(2deg); }
+
+        .polaroid img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 0.65rem;
+        }
+
+        .name-tag { text-align: center; font-weight: 700; letter-spacing: 0.04em; }
+
+        .person-text {
+            align-self: center;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.12);
+            padding: 1rem 1.1rem;
+            border-radius: 12px;
+            max-width: 65ch;
+        }
+
+        .aliases {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            align-items: center;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .alias-panels {
+            height: 100%;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .alias-panel {
+            position: relative;
+            display: grid;
+            place-items: center;
+            font-size: clamp(1.4rem, 3vw, 2.6rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .alias-panel:nth-child(1) { background: linear-gradient(160deg, #221a34, #0e1020); clip-path: polygon(0 0, 93% 0, 78% 100%, 0% 100%); }
+        .alias-panel:nth-child(2) { background: linear-gradient(160deg, #2c1e1e, #17131d); clip-path: polygon(12% 0, 94% 0, 88% 100%, 4% 100%); }
+        .alias-panel:nth-child(3) { background: linear-gradient(160deg, #17222a, #111a1f); clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%); }
+
+        .alias-lines {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.32;
+        }
+
+        .alias-lines::before,
+        .alias-lines::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #fff, transparent);
+        }
+
+        .alias-lines::before { left: 33.3%; transform: skew(-18deg); }
+        .alias-lines::after { left: 66.6%; transform: skew(16deg); }
+
+        footer {
+            padding: 2rem 1rem 2.5rem;
+            text-align: center;
+            color: rgba(255,255,255,0.78);
+        }
+
+        @media (max-width: 900px) {
+            .person-row,
+            .person-row.reverse {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .person-text { width: 100%; }
+            .alias-panels { grid-template-columns: 1fr; min-height: 100vh; }
+            .alias-panel { clip-path: none !important; min-height: 33.33vh; }
+            .alias-lines { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero-story">
+        <div class="hero-content section-shell">
+            <div class="kicker">TFK / title story</div>
+            <h1>Тверское Фурри Комьюнити — наша история, люди и атмосфера.</h1>
+            <p>
+                Полноэкранный стартовый блок: красивая обложка, живое движение и мягкая
+                кинематографичная подача, чтобы сайт выглядел современно и «дорого».
+            </p>
+            <div class="hero-cta">
+                <button class="btn btn-primary">Join Telegram</button>
+                <button class="btn btn-secondary">See Events</button>
+            </div>
+        </div>
+   </header>
+
+    <section class="slides-wrap">
+        <div class="slides-shell">
+            <div class="slides-heading">
+                <h2>Slides / Carousel (80% height)</h2>
+                <p>Кликается кнопками и двигается автоматически как витрина/hero-карусель.</p>
+            </div>
+          <div class="carousel">
+                <div class="slides-track" id="slidesTrack">
+                    <article class="slide slide-1">
+                        <div class="slide-content">
+                            <h3>Template Slide 01 — Meet & Chill</h3>
+                            <p>Placeholder-блок для будущего контента: дата, место, анонс, кнопка.</p>
+                        </div>
+                    </article>
+                    <article class="slide slide-2">
+                        <div class="slide-content">
+                            <h3>Template Slide 02 — Creative Weekend</h3>
+                            <p>Можно заменить на афиши ваших реальных событий и иллюстрации.</p>
+                        </div>
+                    </article>
+                    <article class="slide slide-3">
+                        <div class="slide-content">
+                            <h3>Template Slide 03 — Community Spotlight</h3>
+                            <p>Подходит для историй участников, конкурсов и спец-ивентов.</p>
+                        </div>
+                    </article>
+                </div>
+           <div class="carousel-controls">
+                    <button class="ctrl" id="prevSlide" aria-label="Previous slide">‹</button>
+                    <button class="ctrl" id="nextSlide" aria-label="Next slide">›</button>
+                </div>
+            </div>
+ </section>
+
+    <section class="events section-shell">
+        <h2>Event text places</h2>
+        <div class="events-grid">
+            <article class="event-box">
+                <h4>Furwalk • Central Park</h4>
+                <p>Текстовый слот под описание мини-сходки, время старта, точка сбора.</p>
+            </article>
+            <article class="event-box">
+                <h4>Art Evening</h4>
+                <p>Текстовый слот под мастер-класс, темы рисунка, формат и контакты.</p>
+            </article>
+            <article class="event-box">
+                <h4>Big Meetup</h4>
+                <p>Текстовый слот под крупный ивент + ссылка на форму участия.</p>
+            </article>
+        </div>
+</section>
+
+    <section class="people section-shell" id="suiters">
+        <h2>Suiters</h2>
+
+        <article class="person-row">
+            <div class="polaroid">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80" alt="Suiter Argo">
+                <div class="name-tag">Argo</div>
+            </div>
+            <div class="person-text">
+                Фото в стиле polaroid + текст справа. Здесь можно писать о персонаже,
+                его стиле, активности и любимых мероприятиях.
+            </div>
+        </article>
+
+        <article class="person-row reverse">
+            <div class="polaroid">
+                <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?auto=format&fit=crop&w=900&q=80" alt="Suiter Nika">
+                <div class="name-tag">Nika</div>
+            </div>
+            <div class="person-text">
+                Следующий блок уже справа-налево, как ты и просил. Такое чередование
+                делает страницу живее и разнообразнее.
+            </div>
+        </article>
+    </section>
+
+    <section class="people section-shell" id="admins">
+        <h2>Admins & interesting people</h2>
+
+        <article class="person-row">
+            <div class="polaroid">
+                <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=900&q=80" alt="Admin Nova">
+                <div class="name-tag">Nova / Admin</div>
+            </div>
+            <div class="person-text">
+                Простой блок «фото + текст»: кто за что отвечает, чем помогает сообществу,
+                какие проекты ведёт.
+            </div>
+        </article>
+
+        <article class="person-row reverse">
+            <div class="polaroid">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80" alt="Member Flint">
+                <div class="name-tag">Flint / Organizer</div>
+            </div>
+            <div class="person-text">
+                И снова зеркальная подача слева-направо / справа-налево для ритма и
+                аккуратного storytelling.
+            </div>
+        </article>
+    </section>
+
+    <section class="aliases" id="aliases">
+        <div class="alias-lines" aria-hidden="true"></div>
+        <div class="alias-panels">
+            <article class="alias-panel">Wild Names</article>
+            <article class="alias-panel">Fur IDs</article>
+            <article class="alias-panel">Scene Aliases</article>
+        </div>
+    </section>
+
+    <footer>
+        <p>🐾 TFK • Story / Slides / Events / Suiters / Admins / Aliases</p>
+        <p>&copy; 2026 — handcrafted layout concept with GSAP motion.</p>
+    </footer>
+
+    <script>
+ gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from(".hero-content > *", {
+            y: 40,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.14,
+            ease: "power3.out"
+        });
+
+
+        const revealTargets = gsap.utils.toArray(".slides-heading, .event-box, .person-row, .alias-panel");
+        revealTargets.forEach((el) => {
+            gsap.from(el, {
+                y: 45,
+                opacity: 0,
+                duration: 0.9,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 82%"
+                }
+            });
+        });
+
+        const track = document.getElementById("slidesTrack");
+        const slides = Array.from(track.querySelectorAll(".slide"));
+        const next = document.getElementById("nextSlide");
+        const prev = document.getElementById("prevSlide");
+
+        let active = 0;
+
+        function goToSlide(index) {
+            active = (index + slides.length) % slides.length;
+            track.scrollTo({ left: track.clientWidth * active, behavior: "smooth" });
+        }
+
+        next.addEventListener("click", () => goToSlide(active + 1));
+        prev.addEventListener("click", () => goToSlide(active - 1));
+
+        track.addEventListener("scroll", () => {
+            const i = Math.round(track.scrollLeft / track.clientWidth);
+            if (!Number.isNaN(i)) active = i;
+        });
+
+        let autoPlay = setInterval(() => goToSlide(active + 1), 5200);
+        [track, next, prev].forEach((el) => {
+            el.addEventListener("mouseenter", () => clearInterval(autoPlay));
+            el.addEventListener("mouseleave", () => {
+                clearInterval(autoPlay);
+                autoPlay = setInterval(() => goToSlide(active + 1), 5200);
+            });
+        });
+
+        gsap.from(".alias-panel", {
+            scale: 1.06,
+            opacity: 0.3,
+            duration: 1.3,
+            stagger: 0.2,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: ".aliases",
+                start: "top 70%"
+            }
+        });
+    </script>
+</body>
+</html>
