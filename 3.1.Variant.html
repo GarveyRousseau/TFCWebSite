@@ -2,6 +2,32 @@
 <html lang="en">
 <!--TODO: ADD ICONS-->
 <!--TODO: ADD FONTS-->
+
+
+<!--
+
+      #parallax-1 { background-image: url("https://raw.githubusercontent.com/GarveyRousseau/Websiteproject/refs/heads/main/BG-NEW/layer1-new.png"); }
+      #parallax-2 { background-image: url("https://raw.githubusercontent.com/GarveyRousseau/Websiteproject/refs/heads/main/BG-NEW/layer2-new.png"); }
+      #parallax-3 { background-image: url("https://raw.githubusercontent.com/GarveyRousseau/Websiteproject/refs/heads/main/BG-NEW/layer3-new.png"); }
+      #parallax-4 { background-image: url("https://raw.githubusercontent.com/GarveyRousseau/Websiteproject/refs/heads/main/BG-NEW/layer4-new.png"); }
+
+
+              <div id="parallax-background-scene-1">
+          <div id="parallax-1" class="parallax-img parallax" data-speed="105"></div>
+          <div id="parallax-2" class="parallax-img parallax" data-speed="100"></div>
+          <div id="parallax-3" class="parallax-img parallax" data-speed="95"></div>
+          <div id="parallax-4" class="parallax-img parallax" data-speed="80"></div>
+
+        scrollY = window.scrollY;
+        gsap.to("#parallax-background-scene-1 > .parallax", {
+        y: (i, target) => scrollY * 0.01 * target.dataset.speed,
+        duration: 2,
+        stagger: {
+        amount: 0.1,
+        from: "end",
+        },
+        });
+-->
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -873,7 +899,7 @@
 
         nextBtn.addEventListener('click', () => scrollSlides(1));
         prevBtn.addEventListener('click', () => scrollSlides(-1));
-
+//penis
         gsap.utils.toArray('.slide').forEach((slide, index) => {
             gsap.from(slide, {
                 scale: 0.92,
