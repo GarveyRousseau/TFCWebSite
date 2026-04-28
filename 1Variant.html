@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
-   <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ТФК — Тверское фурри комьюнити. История, события, сьютеры, админы и алиасы в одном стильном лендинге.">
+    <meta name="description"
+        content="ТФК — Тверское фурри комьюнити. История, события, сьютеры, админы и алиасы в одном стильном лендинге.">
     <meta name="title" content="ТФК | Тверское Фурри Комьюнити">
     <meta name="keywords" content="Фурри, TFC, ТФК, Тверь, furry community, events">
     <meta name="author" content="Harvey, MarixFox">
@@ -23,9 +25,12 @@
             --shadow: 0 18px 45px rgba(5, 8, 20, 0.5);
         }
 
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
             font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -34,7 +39,10 @@
             scroll-behavior: smooth;
         }
 
-        a { color: inherit; text-decoration: none; }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
         .site-nav {
             position: fixed;
@@ -63,7 +71,9 @@
             color: var(--muted);
         }
 
-        .nav-links a:hover { color: var(--ink); }
+        .nav-links a:hover {
+            color: var(--ink);
+        }
 
         section {
             position: relative;
@@ -137,12 +147,14 @@
             color: #fff;
         }
 
-        .btn.primary:hover { transform: translateY(-2px); }
+        .btn.primary:hover {
+            transform: translateY(-2px);
+        }
 
         .btn.ghost {
-            border-color: rgba(255,255,255,0.35);
+            border-color: rgba(255, 255, 255, 0.35);
             color: #e7ebff;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .slides {
@@ -166,15 +178,17 @@
         .slide-btn {
             width: 40px;
             height: 40px;
-            border: 1px solid rgba(255,255,255,0.25);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 50%;
             display: grid;
             place-items: center;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             cursor: pointer;
         }
 
-        .slide-btn:hover { border-color: var(--accent-2); }
+        .slide-btn:hover {
+            border-color: var(--accent-2);
+        }
 
         .carousel {
             overflow: hidden;
@@ -215,7 +229,9 @@
             z-index: -1;
         }
 
-        .slide-meta { max-width: 68ch; }
+        .slide-meta {
+            max-width: 68ch;
+        }
 
         .story-grid {
             display: grid;
@@ -226,7 +242,7 @@
 
         .text-tile {
             background: var(--card-soft);
-            border: 1px solid rgba(255,255,255,0.09);
+            border: 1px solid rgba(255, 255, 255, 0.09);
             border-radius: 14px;
             padding: 16px;
         }
@@ -244,15 +260,23 @@
             gap: 22px;
             align-items: center;
             background: var(--card);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 22px;
             padding: clamp(16px, 3vw, 26px);
             box-shadow: var(--shadow);
         }
 
-        .person.reverse { grid-template-columns: 1fr minmax(230px, 330px); }
-        .person.reverse .polaroid { order: 2; }
-        .person.reverse .person-copy { order: 1; }
+        .person.reverse {
+            grid-template-columns: 1fr minmax(230px, 330px);
+        }
+
+        .person.reverse .polaroid {
+            order: 2;
+        }
+
+        .person.reverse .person-copy {
+            order: 1;
+        }
 
         .polaroid {
             background: #f3f5ff;
@@ -260,10 +284,12 @@
             padding: 14px 14px 22px;
             border-radius: 6px;
             transform: rotate(-2deg);
-            box-shadow: 0 14px 25px rgba(0,0,0,0.25);
+            box-shadow: 0 14px 25px rgba(0, 0, 0, 0.25);
         }
 
-        .person.reverse .polaroid { transform: rotate(2deg); }
+        .person.reverse .polaroid {
+            transform: rotate(2deg);
+        }
 
         .polaroid img {
             width: 100%;
@@ -297,7 +323,9 @@
             border-left: 1px solid var(--line);
         }
 
-        .alias-column:first-child { border-left: none; }
+        .alias-column:first-child {
+            border-left: none;
+        }
 
         .alias-column h3 {
             font-size: clamp(1.5rem, 4vw, 3rem);
@@ -310,14 +338,14 @@
             pointer-events: none;
             opacity: 0.35;
             background:
-                linear-gradient(90deg, transparent 33.2%, rgba(255,255,255,0.18) 33.2%, rgba(255,255,255,0.18) 33.55%, transparent 33.55%),
-                linear-gradient(90deg, transparent 66.4%, rgba(255,255,255,0.18) 66.4%, rgba(255,255,255,0.18) 66.75%, transparent 66.75%),
-                linear-gradient(120deg, transparent 49.6%, rgba(127,92,255,0.45) 50%, transparent 50.4%),
-                linear-gradient(60deg, transparent 49.6%, rgba(24,209,255,0.4) 50%, transparent 50.4%);
+                linear-gradient(90deg, transparent 33.2%, rgba(255, 255, 255, 0.18) 33.2%, rgba(255, 255, 255, 0.18) 33.55%, transparent 33.55%),
+                linear-gradient(90deg, transparent 66.4%, rgba(255, 255, 255, 0.18) 66.4%, rgba(255, 255, 255, 0.18) 66.75%, transparent 66.75%),
+                linear-gradient(120deg, transparent 49.6%, rgba(127, 92, 255, 0.45) 50%, transparent 50.4%),
+                linear-gradient(60deg, transparent 49.6%, rgba(24, 209, 255, 0.4) 50%, transparent 50.4%);
         }
 
         footer {
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding: 24px clamp(18px, 3vw, 40px) 38px;
             display: flex;
             justify-content: space-between;
@@ -327,12 +355,13 @@
         }
 
         @media (max-width: 920px) {
+
             .person,
             .person.reverse {
                 grid-template-columns: 1fr;
             }
 
-               .person.reverse .polaroid,
+            .person.reverse .polaroid,
             .person.reverse .person-copy {
                 order: initial;
             }
@@ -347,238 +376,257 @@
                 border-top: 1px solid var(--line);
             }
 
-            .alias-column:first-child { border-top: none; }
+            .alias-column:first-child {
+                border-top: none;
+            }
         }
+    </style>
+</head>
 
+<body>
 
-        </style>
-    </head>
     <body>
-        <body>
-<nav class="site-nav">
-    <div class="brand">TFK</div>
-    <div class="nav-links">
-        <a href="#story">Story</a>
-        <a href="#slides">Slides</a>
-        <a href="#events">Events</a>
-        <a href="#suiters">Suiters</a>
-        <a href="#admins">Admins</a>
-        <a href="#aliases">Aliases</a>
-    </div>
-</nav>
+        <nav class="site-nav">
+            <div class="brand">TFK</div>
+            <div class="nav-links">
+                <a href="#story">Story</a>
+                <a href="#slides">Slides</a>
+                <a href="#events">Events</a>
+                <a href="#suiters">Suiters</a>
+                <a href="#admins">Admins</a>
+                <a href="#aliases">Aliases</a>
+            </div>
+        </nav>
 
-<section id="story" class="title-story fullscreen">
-    <div class="story-wrap">
-        <p style="letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-2)">Tver Furry Community</p>
-        <h1 class="title-in">Big title. Big story. Fullscreen energy.</h1>
-        <p class="lead fade-in">Это базовая full-version заготовка, в которую можно подставить ваш финальный контент: реальную историю комьюнити, ключевые цитаты и медиа.</p>
-        <div class="cta-row fade-in">
-            <a class="btn primary" href="#slides">Explore the journey</a>
-            <a class="btn ghost" href="#events">Open events</a>
-        </div>
-  </div>
-</section>
-
-<section id="slides" class="slides">
-    <div class="slides-top">
-        <div>
-            <h2 style="margin: 0">Slides showcase</h2>
-            <p style="margin: 6px 0 0; color: var(--muted)">80% height top carousel with click / move flow (Microsoft Store vibe).</p>
-        </div>
-        <div class="slide-controls">
-            <button class="slide-btn" id="slidePrev" aria-label="Previous slide">←</button>
-            <button class="slide-btn" id="slideNext" aria-label="Next slide">→</button>
-        </div>
-    </div>
-
-    <div class="carousel">
-        <div class="carousel-track" id="carouselTrack">
-            <article class="slide" style="background-image:url('https://images.unsplash.com/photo-1521335629791-ce4aec67dd47?auto=format&fit=crop&w=1200&q=80')">
-                <div class="slide-meta">
-                    <h3>Template slide #1</h3>
-                    <p>Place your big announcement text here — launch, festival, collaborative art week, or con highlights.</p>
+        <section id="story" class="title-story fullscreen">
+            <div class="story-wrap">
+                <p style="letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-2)">Tver Furry
+                    Community</p>
+                <h1 class="title-in">Big title. Big story. Fullscreen energy.</h1>
+                <p class="lead fade-in">Это базовая full-version заготовка, в которую можно подставить ваш финальный
+                    контент: реальную историю комьюнити, ключевые цитаты и медиа.</p>
+                <div class="cta-row fade-in">
+                    <a class="btn primary" href="#slides">Explore the journey</a>
+                    <a class="btn ghost" href="#events">Open events</a>
                 </div>
- </article>
-            <article class="slide" style="background-image:url('https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=1200&q=80')">
-                <div class="slide-meta">
-                    <h3>Template slide #2</h3>
-                    <p>Clickable card style with big visual. Works both with arrows and trackpad/touch horizontal movement.</p>
+            </div>
+        </section>
+
+        <section id="slides" class="slides">
+            <div class="slides-top">
+                <div>
+                    <h2 style="margin: 0">Slides showcase</h2>
+                    <p style="margin: 6px 0 0; color: var(--muted)">80% height top carousel with click / move flow
+                        (Microsoft Store vibe).</p>
                 </div>
-           </article>
-            <article class="slide" style="background-image:url('https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80')">
-                <div class="slide-meta">
-                    <h3>Template slide #3</h3>
-                    <p>Use for recaps, upcoming roadmap, meetups, internal club updates, or important links.</p>
+                <div class="slide-controls">
+                    <button class="slide-btn" id="slidePrev" aria-label="Previous slide">←</button>
+                    <button class="slide-btn" id="slideNext" aria-label="Next slide">→</button>
+                </div>
+            </div>
+
+            <div class="carousel">
+                <div class="carousel-track" id="carouselTrack">
+                    <article class="slide"
+                        style="background-image:url('https://images.unsplash.com/photo-1521335629791-ce4aec67dd47?auto=format&fit=crop&w=1200&q=80')">
+                        <div class="slide-meta">
+                            <h3>Template slide #1</h3>
+                            <p>Place your big announcement text here — launch, festival, collaborative art week, or con
+                                highlights.</p>
+                        </div>
+                    </article>
+                    <article class="slide"
+                        style="background-image:url('https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=1200&q=80')">
+                        <div class="slide-meta">
+                            <h3>Template slide #2</h3>
+                            <p>Clickable card style with big visual. Works both with arrows and trackpad/touch
+                                horizontal movement.</p>
+                        </div>
+                    </article>
+                    <article class="slide"
+                        style="background-image:url('https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80')">
+                        <div class="slide-meta">
+                            <h3>Template slide #3</h3>
+                            <p>Use for recaps, upcoming roadmap, meetups, internal club updates, or important links.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div id="events" class="story-grid">
+                <article class="text-tile">
+                    <h4>Event space #1</h4>
+                    <p>Add detailed event text here: date, city area, activity plan, host and sign-up link.</p>
+                </article>
+                <article class="text-tile">
+                    <h4>Event space #2</h4>
+                    <p>Add recap snippet: who joined, what happened, photos, and one memorable quote.</p>
+                </article>
+                <article class="text-tile">
+                    <h4>Event space #3</h4>
+                    <p>Add teaser snippet: upcoming collab with artists, workshops, photo walk, or charity stream.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="suiters">
+            <h2 style="max-width:1040px; margin: 0 auto 20px">Suiters</h2>
+            <div class="people-wrap">
+                <article class="person reveal">
+                    <figure class="polaroid">
+                        <img src="https://images.unsplash.com/photo-1619454016518-697bc231e7cb?auto=format&fit=crop&w=700&q=80"
+                            alt="Suiter A">
+                        <figcaption class="photo-name">Nova Fox</figcaption>
+                    </figure>
+                    <div class="person-copy">
+                        <h3>Polaroid card + text on the side</h3>
+                        <p class="lead">Left-to-right layout. You can place lore, personality info, favorite events, and
+                            links to socials or galleries.</p>
+                    </div>
+                </article>
+
+                <article class="person reverse reveal">
+                    <figure class="polaroid">
+                        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=700&q=80"
+                            alt="Suiter B">
+                        <figcaption class="photo-name">Kiro Lynx</figcaption>
+                    </figure>
+                    <div class="person-copy">
+                        <h3>Right-to-left alternation</h3>
+                        <p class="lead">Alternating direction keeps the section dynamic and readable for long lists of
+                            suiters.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="admins">
+            <h2 style="max-width:1040px; margin: 0 auto 20px">Admins & interesting people</h2>
+            <div class="people-wrap">
+                <article class="person reveal">
+                    <figure class="polaroid">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80"
+                            alt="Admin 1">
+                        <figcaption class="photo-name">Arden</figcaption>
+                    </figure>
+                    <div class="person-copy">
+                        <h3>Simple photo + side text</h3>
+                        <p class="lead">Perfect for admin bios, trusted organizers, and key contributors with concise
+                            profile notes.</p>
+                    </div>
+                </article>
+
+                <article class="person reverse reveal">
+                    <figure class="polaroid">
+                        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=700&q=80"
+                            alt="Admin 2">
+                        <figcaption class="photo-name">Mira</figcaption>
+                    </figure>
+                    <div class="person-copy">
+                        <h3>Alternating rhythm again</h3>
+                        <p class="lead">Continue left/right pattern for readability and visual flow across longer team
+                            sections.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="aliases" class="aliases">
+            <div class="diag"></div>
+            <article class="alias-column">
+                <div>
+                    <h3>Alias I</h3>
+                    <p class="lead">Primary community identity block.</p>
                 </div>
             </article>
-        </div>
-    </div>
+            <article class="alias-column">
+                <div>
+                    <h3>Alias II</h3>
+                    <p class="lead">Secondary vibe / inside naming concept.</p>
+                </div>
+            </article>
+            <article class="alias-column">
+                <div>
+                    <h3>Alias III</h3>
+                    <p class="lead">Special events persona / seasonal title.</p>
+                </div>
+            </article>
+        </section>
 
-    <div id="events" class="story-grid">
-        <article class="text-tile">
-            <h4>Event space #1</h4>
-            <p>Add detailed event text here: date, city area, activity plan, host and sign-up link.</p>
-        </article>
-        <article class="text-tile">
-            <h4>Event space #2</h4>
-            <p>Add recap snippet: who joined, what happened, photos, and one memorable quote.</p>
-        </article>
-        <article class="text-tile">
-            <h4>Event space #3</h4>
-            <p>Add teaser snippet: upcoming collab with artists, workshops, photo walk, or charity stream.</p>
-        </article>
-    </div>
-</section>
+        <footer>
+            <div>🐾 TFK Full Layout Draft</div>
+            <div>Drop final text/photos and I can wire all sections to your real content.</div>
+        </footer>
 
-<section id="suiters">
-    <h2 style="max-width:1040px; margin: 0 auto 20px">Suiters</h2>
-    <div class="people-wrap">
-        <article class="person reveal">
-            <figure class="polaroid">
-                <img src="https://images.unsplash.com/photo-1619454016518-697bc231e7cb?auto=format&fit=crop&w=700&q=80" alt="Suiter A">
-                <figcaption class="photo-name">Nova Fox</figcaption>
-            </figure>
-            <div class="person-copy">
-                <h3>Polaroid card + text on the side</h3>
-                <p class="lead">Left-to-right layout. You can place lore, personality info, favorite events, and links to socials or galleries.</p>
-            </div>
-        </article>
+        <script>
+            gsap.registerPlugin(ScrollTrigger);
 
-        <article class="person reverse reveal">
-            <figure class="polaroid">
-                <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=700&q=80" alt="Suiter B">
-                <figcaption class="photo-name">Kiro Lynx</figcaption>
-            </figure>
-            <div class="person-copy">
-                <h3>Right-to-left alternation</h3>
-                <p class="lead">Alternating direction keeps the section dynamic and readable for long lists of suiters.</p>
-            </div>
-  </article>
-    </div>
-</section>
+            const carouselTrack = document.getElementById('carouselTrack');
+            const nextBtn = document.getElementById('slideNext');
+            const prevBtn = document.getElementById('slidePrev');
 
-<section id="admins">
-    <h2 style="max-width:1040px; margin: 0 auto 20px">Admins & interesting people</h2>
-    <div class="people-wrap">
-        <article class="person reveal">
-            <figure class="polaroid">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80" alt="Admin 1">
-                <figcaption class="photo-name">Arden</figcaption>
-            </figure>
-            <div class="person-copy">
-                <h3>Simple photo + side text</h3>
-                <p class="lead">Perfect for admin bios, trusted organizers, and key contributors with concise profile notes.</p>
-            </div>
-        </article>
+            const scrollSlides = (direction = 1) => {
+                const step = carouselTrack.clientWidth * 0.84;
+                carouselTrack.scrollBy({ left: direction * step, behavior: 'smooth' });
+            };
 
-        <article class="person reverse reveal">
-            <figure class="polaroid">
-                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=700&q=80" alt="Admin 2">
-                <figcaption class="photo-name">Mira</figcaption>
-            </figure>
-            <div class="person-copy">
-                <h3>Alternating rhythm again</h3>
-                <p class="lead">Continue left/right pattern for readability and visual flow across longer team sections.</p>
-            </div>
-        </article>
-    </div>
-</section>
+            nextBtn.addEventListener('click', () => scrollSlides(1));
+            prevBtn.addEventListener('click', () => scrollSlides(-1));
 
-<section id="aliases" class="aliases">
-    <div class="diag"></div>
-    <article class="alias-column">
-        <div>
-            <h3>Alias I</h3>
-            <p class="lead">Primary community identity block.</p>
-        </div>
-    </article>
-    <article class="alias-column">
-        <div>
-            <h3>Alias II</h3>
-            <p class="lead">Secondary vibe / inside naming concept.</p>
-        </div>
- </article>
-    <article class="alias-column">
-        <div>
-            <h3>Alias III</h3>
-            <p class="lead">Special events persona / seasonal title.</p>
-        </div>
- </article>
-</section>
+            gsap.from('.title-in', {
+                y: 40,
+                opacity: 0,
+                duration: 1,
+                ease: 'power3.out'
+            });
 
-<footer>
-    <div>🐾 TFK Full Layout Draft</div>
-    <div>Drop final text/photos and I can wire all sections to your real content.</div>
-</footer>
+            gsap.from('.fade-in', {
+                y: 24,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.18,
+                ease: 'power2.out',
+                delay: 0.2
+            });
 
-<script>
-    gsap.registerPlugin(ScrollTrigger);
+            gsap.utils.toArray('.slide').forEach((slide, index) => {
+                gsap.from(slide, {
+                    scale: 0.92,
+                    opacity: 0,
+                    duration: 0.9,
+                    ease: 'power2.out',
+                    delay: index * 0.1,
+                    scrollTrigger: {
+                        trigger: slide,
+                        start: 'top 88%'
+                    }
+                });
+            });
 
-    const carouselTrack = document.getElementById('carouselTrack');
-    const nextBtn = document.getElementById('slideNext');
-    const prevBtn = document.getElementById('slidePrev');
+            gsap.utils.toArray('.reveal').forEach((block) => {
+                gsap.from(block, {
+                    y: 48,
+                    opacity: 0,
+                    duration: 0.9,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: block,
+                        start: 'top 85%'
+                    }
+                });
+            });
 
-    const scrollSlides = (direction = 1) => {
-        const step = carouselTrack.clientWidth * 0.84;
-        carouselTrack.scrollBy({ left: direction * step, behavior: 'smooth' });
-    };
+            gsap.from('.alias-column', {
+                y: 60,
+                opacity: 0,
+                duration: 0.95,
+                stagger: 0.16,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '#aliases',
+                    start: 'top 72%'
+                }
+            });
+        </script>
 
-    nextBtn.addEventListener('click', () => scrollSlides(1));
-    prevBtn.addEventListener('click', () => scrollSlides(-1));
-
-    gsap.from('.title-in', {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out'
-    });
-
-    gsap.from('.fade-in', {
-        y: 24,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.18,
-        ease: 'power2.out',
-        delay: 0.2
-    });
-
-    gsap.utils.toArray('.slide').forEach((slide, index) => {
-        gsap.from(slide, {
-            scale: 0.92,
-            opacity: 0,
-            duration: 0.9,
-            ease: 'power2.out',
-            delay: index * 0.1,
-            scrollTrigger: {
-                trigger: slide,
-                start: 'top 88%'
-            }
-        });
-    });
-
-    gsap.utils.toArray('.reveal').forEach((block) => {
-        gsap.from(block, {
-            y: 48,
-            opacity: 0,
-            duration: 0.9,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: block,
-                start: 'top 85%'
-            }
-        });
-    });
-
-    gsap.from('.alias-column', {
-        y: 60,
-        opacity: 0,
-        duration: 0.95,
-        stagger: 0.16,
-        ease: 'power3.out',
-        scrollTrigger: {
-            trigger: '#aliases',
-            start: 'top 72%'
-        }
-    });
-</script>
 </html>

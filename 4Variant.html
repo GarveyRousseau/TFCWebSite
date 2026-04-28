@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,9 +27,12 @@
             --radius: 18px;
         }
 
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
             font-family: "Inter", "Segoe UI", system-ui, sans-serif;
@@ -37,11 +41,19 @@
             overflow-x: hidden;
         }
 
-        img { max-width: 100%; display: block; }
+        img {
+            max-width: 100%;
+            display: block;
+        }
 
-        a { color: inherit; text-decoration: none; }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-        .section { padding: 4rem clamp(1rem, 4vw, 4rem); }
+        .section {
+            padding: 4rem clamp(1rem, 4vw, 4rem);
+        }
 
         .title {
             font-size: clamp(2rem, 4vw, 4rem);
@@ -95,11 +107,23 @@
             box-shadow: var(--shadow);
         }
 
-        .hero h1 { font-size: clamp(2.4rem, 7vw, 6.2rem); margin: 0; }
+        .hero h1 {
+            font-size: clamp(2.4rem, 7vw, 6.2rem);
+            margin: 0;
+        }
 
-        .hero p { color: #e7e2ff; margin: 1rem auto 2rem; max-width: 60ch; }
+        .hero p {
+            color: #e7e2ff;
+            margin: 1rem auto 2rem;
+            max-width: 60ch;
+        }
 
-        .btns { display: flex; gap: 0.9rem; flex-wrap: wrap; justify-content: center; }
+        .btns {
+            display: flex;
+            gap: 0.9rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
         .btn {
             border: 0;
@@ -110,8 +134,16 @@
             cursor: pointer;
         }
 
-        .btn-primary { background: linear-gradient(120deg, var(--accent), #f98f4f); color: white; }
-        .btn-secondary { background: rgba(255, 255, 255, 0.12); color: white; border: 1px solid rgba(255, 255, 255, 0.3); }
+        .btn-primary {
+            background: linear-gradient(120deg, var(--accent), #f98f4f);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
 
         .story {
             min-height: 100vh;
@@ -149,7 +181,12 @@
             background: var(--bg-soft);
         }
 
-        .slides-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; }
+        .slides-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 1rem;
+        }
 
         .carousel-wrap {
             position: relative;
@@ -172,7 +209,10 @@
             background-position: center;
         }
 
-        .slide.active { opacity: 1; pointer-events: auto; }
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
 
         .slide::before {
             content: "";
@@ -217,9 +257,15 @@
         }
 
         .events-grid,
-        .people-list { display: grid; gap: 1.4rem; margin-top: 1.6rem; }
+        .people-list {
+            display: grid;
+            gap: 1.4rem;
+            margin-top: 1.6rem;
+        }
 
-        .events-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+        .events-grid {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
 
         .event-card {
             background: rgba(255, 255, 255, 0.04);
@@ -235,10 +281,18 @@
             align-items: center;
         }
 
-        .people-row.reverse { grid-template-columns: 1fr 280px; }
+        .people-row.reverse {
+            grid-template-columns: 1fr 280px;
+        }
+
         .people-row.reverse .polaroid,
-        .people-row.reverse .person-text { order: 2; }
-        .people-row.reverse .person-text { order: 1; }
+        .people-row.reverse .person-text {
+            order: 2;
+        }
+
+        .people-row.reverse .person-text {
+            order: 1;
+        }
 
         .polaroid {
             background: #fff;
@@ -248,9 +302,19 @@
             color: #111;
         }
 
-        .polaroid img { height: 280px; width: 100%; object-fit: cover; border-radius: 4px; }
+        .polaroid img {
+            height: 280px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
 
-        .polaroid small { display: block; margin-top: 0.6rem; font-weight: 700; text-align: center; }
+        .polaroid small {
+            display: block;
+            margin-top: 0.6rem;
+            font-weight: 700;
+            text-align: center;
+        }
 
         .person-text {
             border: 1px solid var(--line);
@@ -305,14 +369,26 @@
         }
 
         @media (max-width: 900px) {
-            .story-grid { grid-template-columns: 1fr; }
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+
             .people-row,
-            .people-row.reverse { grid-template-columns: 1fr; }
+            .people-row.reverse {
+                grid-template-columns: 1fr;
+            }
+
             .people-row.reverse .polaroid,
             .people-row.reverse .person-text,
             .people-row .polaroid,
-            .people-row .person-text { order: initial; }
-            .alias-shell { grid-template-columns: 1fr; }
+            .people-row .person-text {
+                order: initial;
+            }
+
+            .alias-shell {
+                grid-template-columns: 1fr;
+            }
+
             .alias-col:not(:last-child)::after {
                 width: 100%;
                 height: 2px;
@@ -325,11 +401,13 @@
         }
     </style>
 </head>
+
 <body>
     <header class="hero">
         <div class="hero-shell">
             <h1>Tver Furry Community</h1>
-            <p>Stylish landing concept with a cinematic intro, event carousel, suiter cards, team highlights, and signature alias split-screen.</p>
+            <p>Stylish landing concept with a cinematic intro, event carousel, suiter cards, team highlights, and
+                signature alias split-screen.</p>
             <div class="btns">
                 <button class="btn btn-primary">Join Telegram</button>
                 <button class="btn btn-secondary">Join Discord</button>
@@ -337,39 +415,46 @@
         </div>
     </header>
 
-  <section class="section story">
+    <section class="section story">
         <div class="story-grid">
             <div class="story-card reveal-up">
                 <h2 class="title">Our Story</h2>
-                <p class="lead">From small weekend walks to packed meetups, this community grew into a creative, warm place for artists, suiters, photographers, and curious newcomers. This block is fullscreen as requested, designed for your final text later.</p>
+                <p class="lead">From small weekend walks to packed meetups, this community grew into a creative, warm
+                    place for artists, suiters, photographers, and curious newcomers. This block is fullscreen as
+                    requested, designed for your final text later.</p>
             </div>
-         <div class="story-visual reveal-up">
-                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80" alt="Story visual">
+            <div class="story-visual reveal-up">
+                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80"
+                    alt="Story visual">
             </div>
         </div>
-</section>
+    </section>
 
     <section class="section slides">
         <div class="slides-head">
             <div>
                 <h2 class="title">Featured Slides</h2>
-                <p class="lead">80% viewport carousel, clickable arrows, auto-rotation, and GSAP transitions (Microsoft Store vibe).</p>
+                <p class="lead">80% viewport carousel, clickable arrows, auto-rotation, and GSAP transitions (Microsoft
+                    Store vibe).</p>
             </div>
- </div>
+        </div>
         <div class="carousel-wrap" id="carousel">
-            <article class="slide active" style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80');">
+            <article class="slide active"
+                style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80');">
                 <div class="slide-copy">
                     <h3>Template Slide 01</h3>
                     <p>Drop your main campaign, meetup teaser, or announcement in this high-impact area.</p>
                 </div>
-   </article>
-            <article class="slide" style="background-image:url('https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=1600&q=80');">
+            </article>
+            <article class="slide"
+                style="background-image:url('https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=1600&q=80');">
                 <div class="slide-copy">
                     <h3>Template Slide 02</h3>
                     <p>Use this for convention photos, social highlights, or your next event banner.</p>
                 </div>
-    </article>
-            <article class="slide" style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80');">
+            </article>
+            <article class="slide"
+                style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80');">
                 <div class="slide-copy">
                     <h3>Template Slide 03</h3>
                     <p>Fast to replace with final assets while keeping transitions and layout intact.</p>
@@ -380,15 +465,24 @@
                 <button class="carousel-btn" id="prevBtn" aria-label="Previous slide">‹</button>
                 <button class="carousel-btn" id="nextBtn" aria-label="Next slide">›</button>
             </div>
- </section>
+    </section>
 
     <section class="section">
         <h2 class="title">Events</h2>
         <p class="lead">Text placeholders for your events and announcements.</p>
         <div class="events-grid">
-            <article class="event-card reveal-up"><h3>City Night Walk</h3><p>Evening meetup with photos, chats, and new people.</p></article>
-            <article class="event-card reveal-up"><h3>Creative Hangout</h3><p>Sketching session + tea + character concept talks.</p></article>
-            <article class="event-card reveal-up"><h3>FurMeet Weekend</h3><p>Main monthly event with games and mini activities.</p></article>
+            <article class="event-card reveal-up">
+                <h3>City Night Walk</h3>
+                <p>Evening meetup with photos, chats, and new people.</p>
+            </article>
+            <article class="event-card reveal-up">
+                <h3>Creative Hangout</h3>
+                <p>Sketching session + tea + character concept talks.</p>
+            </article>
+            <article class="event-card reveal-up">
+                <h3>FurMeet Weekend</h3>
+                <p>Main monthly event with games and mini activities.</p>
+            </article>
         </div>
     </section>
 
@@ -397,26 +491,46 @@
         <p class="lead">Polaroid style cards with name under photo and alternating left/right text flow.</p>
         <div class="people-list">
             <article class="people-row reveal-up">
-                <div class="polaroid"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=700&q=80" alt="Suiter 1"><small>Nova Flashpaw</small></div>
-                <div class="person-text"><h3>Friendly energy</h3><p>Always starts the mood, welcomes newcomers, and keeps every meetup active and fun.</p></div>
+                <div class="polaroid"><img
+                        src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=700&q=80"
+                        alt="Suiter 1"><small>Nova Flashpaw</small></div>
+                <div class="person-text">
+                    <h3>Friendly energy</h3>
+                    <p>Always starts the mood, welcomes newcomers, and keeps every meetup active and fun.</p>
+                </div>
             </article>
             <article class="people-row reverse reveal-up">
-                <div class="polaroid"><img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=700&q=80" alt="Suiter 2"><small>Kiro Nighttail</small></div>
-                <div class="person-text"><h3>Performance style</h3><p>Known for expressive stage moments, high-energy interactions, and memorable photos.</p></div>
+                <div class="polaroid"><img
+                        src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=700&q=80"
+                        alt="Suiter 2"><small>Kiro Nighttail</small></div>
+                <div class="person-text">
+                    <h3>Performance style</h3>
+                    <p>Known for expressive stage moments, high-energy interactions, and memorable photos.</p>
+                </div>
             </article>
         </div>
- </section>
+    </section>
 
     <section class="section">
         <h2 class="title">Admins & Interesting People</h2>
         <div class="people-list">
             <article class="people-row reveal-up">
-                <div class="polaroid"><img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?auto=format&fit=crop&w=700&q=80" alt="Admin 1"><small>Marix — Coordinator</small></div>
-                <div class="person-text"><h3>Community builder</h3><p>Plans routes, coordinates activities, and keeps the core spirit alive.</p></div>
+                <div class="polaroid"><img
+                        src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?auto=format&fit=crop&w=700&q=80"
+                        alt="Admin 1"><small>Marix — Coordinator</small></div>
+                <div class="person-text">
+                    <h3>Community builder</h3>
+                    <p>Plans routes, coordinates activities, and keeps the core spirit alive.</p>
+                </div>
             </article>
             <article class="people-row reverse reveal-up">
-                <div class="polaroid"><img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=700&q=80" alt="Admin 2"><small>Harvey — Creative</small></div>
-                <div class="person-text"><h3>Visual direction</h3><p>Shapes style, edits media, and makes sure community pages look expressive and modern.</p></div>
+                <div class="polaroid"><img
+                        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=700&q=80"
+                        alt="Admin 2"><small>Harvey — Creative</small></div>
+                <div class="person-text">
+                    <h3>Visual direction</h3>
+                    <p>Shapes style, edits media, and makes sure community pages look expressive and modern.</p>
+                </div>
             </article>
         </div>
     </section>
@@ -443,7 +557,7 @@
     </footer>
 
     <script>
-  gsap.registerPlugin(ScrollTrigger);
+        gsap.registerPlugin(ScrollTrigger);
 
         gsap.from(".hero-shell", {
             y: 80,
@@ -512,4 +626,5 @@
         resetAutoPlay();
     </script>
 </body>
+
 </html>

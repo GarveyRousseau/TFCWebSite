@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,9 @@
     <meta name="author" content="Harvey, MarixFox">
     <title>TFK — Community Story</title>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-  <style>
+    <style>
         :root {
             --bg: #0f1018;
             --bg-soft: #181a27;
@@ -24,9 +25,13 @@
             --line: rgba(255, 255, 255, 0.2);
             --max: 1200px;
         }
-        * { box-sizing: border-box; }
 
-        html, body {
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
             margin: 0;
             padding: 0;
             scroll-behavior: smooth;
@@ -35,7 +40,10 @@
             font-family: "Inter", "Segoe UI", system-ui, sans-serif;
         }
 
-       img { max-width: 100%; display: block; }
+        img {
+            max-width: 100%;
+            display: block;
+        }
 
         .section-shell {
             width: min(100% - 3rem, var(--max));
@@ -56,7 +64,7 @@
             position: absolute;
             inset: 0;
             background:
-                linear-gradient(140deg, rgba(255, 106, 61, 0.35), rgba(0,0,0,0.1) 50%),
+                linear-gradient(140deg, rgba(255, 106, 61, 0.35), rgba(0, 0, 0, 0.1) 50%),
                 url("https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat;
             filter: saturate(1.05) contrast(1.08);
             transform: scale(1.08);
@@ -109,9 +117,21 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .btn:hover { transform: translateY(-2px); }
-        .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 10px 25px rgba(255, 106, 61, 0.4); }
-        .btn-secondary { background: rgba(255,255,255,0.14); color: #fff; border: 1px solid rgba(255,255,255,0.22); }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(255, 106, 61, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.14);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+        }
 
         .slides-wrap {
             min-height: 100vh;
@@ -123,9 +143,19 @@
             margin: 0 auto;
         }
 
-        .slides-heading { margin-bottom: 1.2rem; }
-        .slides-heading h2 { margin: 0; font-size: clamp(1.6rem, 4vw, 3rem); }
-        .slides-heading p { margin: 0.5rem 0 0; opacity: 0.8; }
+        .slides-heading {
+            margin-bottom: 1.2rem;
+        }
+
+        .slides-heading h2 {
+            margin: 0;
+            font-size: clamp(1.6rem, 4vw, 3rem);
+        }
+
+        .slides-heading p {
+            margin: 0.5rem 0 0;
+            opacity: 0.8;
+        }
 
         .carousel {
             position: relative;
@@ -148,7 +178,10 @@
             scroll-behavior: smooth;
             scrollbar-width: none;
         }
-        .slides-track::-webkit-scrollbar { display: none; }
+
+        .slides-track::-webkit-scrollbar {
+            display: none;
+        }
 
         .slide {
             position: relative;
@@ -173,16 +206,31 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.1));
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.1));
             z-index: -1;
         }
 
-        .slide-1::before { background-image: url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1600&q=80"); }
-        .slide-2::before { background-image: url("https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1600&q=80"); }
-        .slide-3::before { background-image: url("https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=1600&q=80"); }
+        .slide-1::before {
+            background-image: url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1600&q=80");
+        }
 
-        .slide-content h3 { margin: 0; font-size: clamp(1.4rem, 3vw, 2.6rem); }
-        .slide-content p { margin: 0.55rem 0 0; max-width: 60ch; }
+        .slide-2::before {
+            background-image: url("https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1600&q=80");
+        }
+
+        .slide-3::before {
+            background-image: url("https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=1600&q=80");
+        }
+
+        .slide-content h3 {
+            margin: 0;
+            font-size: clamp(1.4rem, 3vw, 2.6rem);
+        }
+
+        .slide-content p {
+            margin: 0.55rem 0 0;
+            max-width: 60ch;
+        }
 
         .carousel-controls {
             position: absolute;
@@ -193,9 +241,9 @@
         }
 
         .ctrl {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             color: #fff;
-            border: 1px solid rgba(255,255,255,0.35);
+            border: 1px solid rgba(255, 255, 255, 0.35);
             border-radius: 50%;
             width: 42px;
             height: 42px;
@@ -215,13 +263,20 @@
 
         .event-box {
             background: linear-gradient(180deg, #1e2031, #171825);
-            border: 1px solid rgba(255,255,255,0.15);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 16px;
             padding: 1.1rem;
         }
 
-        .event-box h4 { margin: 0 0 0.4rem; color: var(--accent-2); }
-        .event-box p { margin: 0; opacity: 0.88; }
+        .event-box h4 {
+            margin: 0 0 0.4rem;
+            color: var(--accent-2);
+        }
+
+        .event-box p {
+            margin: 0;
+            opacity: 0.88;
+        }
 
         .people {
             padding: 4.5rem 0;
@@ -239,7 +294,9 @@
             align-items: flex-start;
         }
 
-        .person-row.reverse { flex-direction: row-reverse; }
+        .person-row.reverse {
+            flex-direction: row-reverse;
+        }
 
         .polaroid {
             width: min(320px, 95%);
@@ -252,7 +309,9 @@
             flex-shrink: 0;
         }
 
-        .person-row.reverse .polaroid { transform: rotate(2deg); }
+        .person-row.reverse .polaroid {
+            transform: rotate(2deg);
+        }
 
         .polaroid img {
             width: 100%;
@@ -262,12 +321,16 @@
             margin-bottom: 0.65rem;
         }
 
-        .name-tag { text-align: center; font-weight: 700; letter-spacing: 0.04em; }
+        .name-tag {
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
 
         .person-text {
             align-self: center;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             padding: 1rem 1.1rem;
             border-radius: 12px;
             max-width: 65ch;
@@ -280,8 +343,8 @@
             display: grid;
             align-items: center;
             margin-top: 3rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .alias-panels {
@@ -303,9 +366,20 @@
             text-align: center;
         }
 
-        .alias-panel:nth-child(1) { background: linear-gradient(160deg, #221a34, #0e1020); clip-path: polygon(0 0, 93% 0, 78% 100%, 0% 100%); }
-        .alias-panel:nth-child(2) { background: linear-gradient(160deg, #2c1e1e, #17131d); clip-path: polygon(12% 0, 94% 0, 88% 100%, 4% 100%); }
-        .alias-panel:nth-child(3) { background: linear-gradient(160deg, #17222a, #111a1f); clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%); }
+        .alias-panel:nth-child(1) {
+            background: linear-gradient(160deg, #221a34, #0e1020);
+            clip-path: polygon(0 0, 93% 0, 78% 100%, 0% 100%);
+        }
+
+        .alias-panel:nth-child(2) {
+            background: linear-gradient(160deg, #2c1e1e, #17131d);
+            clip-path: polygon(12% 0, 94% 0, 88% 100%, 4% 100%);
+        }
+
+        .alias-panel:nth-child(3) {
+            background: linear-gradient(160deg, #17222a, #111a1f);
+            clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
+        }
 
         .alias-lines {
             position: absolute;
@@ -324,29 +398,51 @@
             background: linear-gradient(to bottom, transparent, #fff, transparent);
         }
 
-        .alias-lines::before { left: 33.3%; transform: skew(-18deg); }
-        .alias-lines::after { left: 66.6%; transform: skew(16deg); }
+        .alias-lines::before {
+            left: 33.3%;
+            transform: skew(-18deg);
+        }
+
+        .alias-lines::after {
+            left: 66.6%;
+            transform: skew(16deg);
+        }
 
         footer {
             padding: 2rem 1rem 2.5rem;
             text-align: center;
-            color: rgba(255,255,255,0.78);
+            color: rgba(255, 255, 255, 0.78);
         }
 
         @media (max-width: 900px) {
+
             .person-row,
             .person-row.reverse {
                 flex-direction: column;
                 align-items: center;
             }
 
-            .person-text { width: 100%; }
-            .alias-panels { grid-template-columns: 1fr; min-height: 100vh; }
-            .alias-panel { clip-path: none !important; min-height: 33.33vh; }
-            .alias-lines { display: none; }
+            .person-text {
+                width: 100%;
+            }
+
+            .alias-panels {
+                grid-template-columns: 1fr;
+                min-height: 100vh;
+            }
+
+            .alias-panel {
+                clip-path: none !important;
+                min-height: 33.33vh;
+            }
+
+            .alias-lines {
+                display: none;
+            }
         }
     </style>
 </head>
+
 <body>
     <header class="hero-story">
         <div class="hero-content section-shell">
@@ -361,7 +457,7 @@
                 <button class="btn btn-secondary">See Events</button>
             </div>
         </div>
-   </header>
+    </header>
 
     <section class="slides-wrap">
         <div class="slides-shell">
@@ -369,7 +465,7 @@
                 <h2>Slides / Carousel (80% height)</h2>
                 <p>Кликается кнопками и двигается автоматически как витрина/hero-карусель.</p>
             </div>
-          <div class="carousel">
+            <div class="carousel">
                 <div class="slides-track" id="slidesTrack">
                     <article class="slide slide-1">
                         <div class="slide-content">
@@ -390,12 +486,12 @@
                         </div>
                     </article>
                 </div>
-           <div class="carousel-controls">
+                <div class="carousel-controls">
                     <button class="ctrl" id="prevSlide" aria-label="Previous slide">‹</button>
                     <button class="ctrl" id="nextSlide" aria-label="Next slide">›</button>
                 </div>
             </div>
- </section>
+    </section>
 
     <section class="events section-shell">
         <h2>Event text places</h2>
@@ -413,14 +509,15 @@
                 <p>Текстовый слот под крупный ивент + ссылка на форму участия.</p>
             </article>
         </div>
-</section>
+    </section>
 
     <section class="people section-shell" id="suiters">
         <h2>Suiters</h2>
 
         <article class="person-row">
             <div class="polaroid">
-                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80" alt="Suiter Argo">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80"
+                    alt="Suiter Argo">
                 <div class="name-tag">Argo</div>
             </div>
             <div class="person-text">
@@ -431,7 +528,8 @@
 
         <article class="person-row reverse">
             <div class="polaroid">
-                <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?auto=format&fit=crop&w=900&q=80" alt="Suiter Nika">
+                <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?auto=format&fit=crop&w=900&q=80"
+                    alt="Suiter Nika">
                 <div class="name-tag">Nika</div>
             </div>
             <div class="person-text">
@@ -446,7 +544,8 @@
 
         <article class="person-row">
             <div class="polaroid">
-                <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=900&q=80" alt="Admin Nova">
+                <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=900&q=80"
+                    alt="Admin Nova">
                 <div class="name-tag">Nova / Admin</div>
             </div>
             <div class="person-text">
@@ -457,7 +556,8 @@
 
         <article class="person-row reverse">
             <div class="polaroid">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80" alt="Member Flint">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"
+                    alt="Member Flint">
                 <div class="name-tag">Flint / Organizer</div>
             </div>
             <div class="person-text">
@@ -482,7 +582,7 @@
     </footer>
 
     <script>
- gsap.registerPlugin(ScrollTrigger);
+        gsap.registerPlugin(ScrollTrigger);
 
         gsap.from(".hero-content > *", {
             y: 40,
@@ -549,4 +649,5 @@
         });
     </script>
 </body>
+
 </html>
