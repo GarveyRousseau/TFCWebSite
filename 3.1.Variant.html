@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Тверское Фурри Комьюнити — встречи, мероприятия и яркие личности." />
+    <meta name="title" content="ТФК | Тверское Фурри Комьюнити" />
+    <meta name="keywords" content="Фурри, TFC, ТФК, Тверь, события, сообщество" />
+    <meta name="author" content="Harvey, MarixFox" />
+    <title>TFC — Variant 3</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
+    <style>
+        :root {
+            --bg: #0a0d16;
+            --bg-soft: #12192b;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --card: rgba(255, 255, 255, 0.08);
+            --card-solid: #f6efe3;
+            --text: #f8f4ee;
+            --text-dark: #2f2b2a;
+            --accent: #ff8c42;
+            --accent-2: #5de2e7;
+            --line: rgba(255, 255, 255, 0.18);
+            --shadow: 0 14px 40px rgba(0, 0, 0, 0.4);
+            --radius: 20px;
+            --content-max: 1180px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+            background: radial-gradient(circle at 20% 10%, #1c2744 0%, var(--bg) 50%);
+            color: var(--text);
+            scroll-behavior: smooth;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        section {
+            position: relative;
+            padding: 70px 24px;
+        }
+
+        .container {
+            max-width: var(--content-max);
+            margin: 0 auto;
+        }
+
+        .title {
+            font-size: clamp(1.9rem, 3.1vw, 3.2rem);
+            line-height: 1.1;
+            letter-spacing: 0.02em;
+        }
+
+        .kicker {
+            color: var(--accent-2);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 0.77rem;
+            margin-bottom: 10px;
+        }
+
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 30px;
+            padding: 12px 26px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            backdrop-filter: blur(4px);
+            z-index: 10;
+        }
+
+        .navbar-content {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .navbar-content:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            padding: 24px;
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            border-radius: 100%;
+            filter: blur(8px);
+        }
+
+        .hero::before {
+            width: 420px;
+            height: 420px;
+            background: rgba(93, 226, 231, 0.2);
+            top: -80px;
+            right: 2%;
+        }
+
+        .hero::after {
+            width: 360px;
+            height: 360px;
+            background: rgba(255, 140, 66, 0.18);
+            left: -120px;
+            bottom: -100px;
+        }
+
+        .hero-card {
+            width: min(100%, 1080px);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.04));
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            padding: clamp(28px, 4.2vw, 52px);
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 5rem);
+            line-height: 0.95;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            max-width: 640px;
+            opacity: 0.88;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border: 0;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 999px;
+            font-weight: 700;
+            padding: 12px 22px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent), #ffac68);
+            color: #1c1412;
+        }
+
+        .btn-soft {
+            color: var(--text);
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .story {
+            min-height: 100vh;
+        }
+
+        .story-panel {
+            padding: clamp(20px, 4vw, 40px);
+            border-radius: var(--radius);
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+            border: 1px solid var(--line);
+        }
+
+        .story p {
+            margin-top: 12px;
+            line-height: 1.65;
+            opacity: 0.94;
+        }
+
+        .slides {
+            min-height: 80vh;
+            padding-top: 96px;
+        }
+
+        .slides-top {
+            width: min(100%, 1120px);
+            margin: 0 auto 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 16px;
+        }
+
+        .slide-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .slide-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .slide-btn:hover {
+            border-color: var(--accent-2);
+        }
+
+        .carousel {
+            width: min(100%, 1120px);
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 26px;
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            background: rgba(255, 255, 255, 0.04);
+            padding: 14px;
+        }
+
+        .carousel-track {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(80%, 1fr);
+            gap: 14px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 10px;
+            scrollbar-width: thin;
+            scroll-behavior: smooth;
+        }
+
+        .slide {
+            scroll-snap-align: start;
+            min-height: clamp(260px, 62vh, 620px);
+            border-radius: 22px;
+            padding: 24px;
+            display: flex;
+            align-items: end;
+            background-size: cover;
+            background-position: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            isolation: isolate;
+        }
+
+        .slide::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(transparent, rgba(9, 11, 22, 0.86));
+            z-index: -1;
+        }
+
+        .slide-meta {
+            max-width: 68ch;
+        }
+
+        .slide-meta h3 {
+            font-size: clamp(1.3rem, 2.5vw, 2.3rem);
+            margin-bottom: 8px;
+        }
+
+        .slide-meta p {
+            line-height: 1.58;
+            opacity: 0.94;
+        }
+
+        .events-grid {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .event-card {
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .event-card h4 {
+            margin-bottom: 8px;
+            color: var(--accent-2);
+        }
+
+        .people {
+            background: linear-gradient(180deg, rgba(8, 12, 20, 0), rgba(8, 12, 20, 0.55));
+        }
+
+        .person-row {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 24px;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .person-row.reverse {
+            grid-template-columns: 1fr 320px;
+        }
+
+        .person-row.reverse .polaroid {
+            order: 2;
+        }
+
+        .person-row.reverse .person-text {
+            order: 1;
+            text-align: right;
+        }
+
+        .polaroid {
+            background: var(--card-solid);
+            padding: 14px 14px 50px;
+            border-radius: 6px;
+            box-shadow: 0 16px 22px rgba(0, 0, 0, 0.22);
+            position: relative;
+            transform: rotate(-1.8deg);
+        }
+
+        .reverse .polaroid {
+            transform: rotate(2deg);
+        }
+
+        .polaroid img {
+            height: 310px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .polaroid-name {
+            color: var(--text-dark);
+            font-weight: 700;
+            position: absolute;
+            left: 16px;
+            bottom: 14px;
+            font-family: "Comic Sans MS", "Bradley Hand", cursive;
+            font-size: 1.1rem;
+        }
+
+        .person-text p {
+            margin-top: 10px;
+            line-height: 1.65;
+            opacity: 0.9;
+        }
+
+        .aliases {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+
+        .alias-grid {
+            width: min(100%, var(--content-max));
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            position: relative;
+            min-height: 60vh;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .alias-grid::before,
+        .alias-grid::after {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 145%;
+            background: linear-gradient(transparent, var(--accent), transparent);
+            top: -22%;
+            pointer-events: none;
+            opacity: 0.85;
+        }
+
+        .alias-grid::before {
+            left: 33.5%;
+            transform: rotate(-14deg);
+        }
+
+        .alias-grid::after {
+            right: 33.5%;
+            transform: rotate(14deg);
+        }
+
+        .alias-card {
+            padding: 32px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .alias-card:last-child {
+            border-right: 0;
+        }
+
+        .alias-card h3 {
+            font-size: clamp(1.2rem, 2vw, 2.2rem);
+            margin-bottom: 10px;
+        }
+
+        .alias-card p {
+            opacity: 0.82;
+            max-width: 270px;
+            line-height: 1.6;
+        }
+
+        footer {
+            padding: 24px 24px 40px;
+            text-align: center;
+            border-top: 1px solid var(--line);
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        footer p {
+            opacity: 0.82;
+            margin-top: 8px;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 960px) {
+
+            .navbar {
+                gap: 12px;
+                padding: 10px 14px;
+            }
+
+            .split,
+            .events-grid,
+            .person-row,
+            .person-row.reverse {
+                grid-template-columns: 1fr;
+            }
+
+            .person-row.reverse .polaroid,
+            .person-row.reverse .person-text {
+                order: initial;
+                text-align: left;
+            }
+
+            .alias-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .alias-grid::before,
+            .alias-grid::after {
+                display: none;
+            }
+
+            .alias-card {
+                border-right: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .alias-card:last-child {
+                border-bottom: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="#top" class="navbar-content">Home</a>
+        <a href="#story" class="navbar-content">Story</a>
+        <a href="#slides" class="navbar-content">Slides</a>
+        <a href="#events" class="navbar-content">Events</a>
+        <a href="#suiters" class="navbar-content">Suiters</a>
+        <a href="#admins" class="navbar-content">Admins</a>
+        <a href="#aliases" class="navbar-content">Aliases</a>
+    </nav>
+
+    <header class="hero" id="top">
+        <div class="hero-card reveal-up">
+            <p class="kicker split-target">Tver Furry Community</p>
+            <h1 class="split-target">One Pack.<br />Many Stories.</h1>
+            <p class="split-target">
+                Full concept version of the website with cinematic sections, animated slides,
+                event blocks, suiter/admin showcase, and a stylized aliases screen.
+            </p>
+            <div class="btn-row">
+                <a class="btn btn-primary" href="#slides">See Highlights</a>
+                <a class="btn btn-soft" href="#events">Upcoming Events</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="story" id="story">
+        <div class="container split">
+            <div class="story-panel reveal-left">
+                <p class="kicker split-target">Title Story</p>
+                <h2 class="title split-target">A place where creators, suiters, and friends meet.</h2>
+            </div>
+            <div class="story-panel reveal-right">
+                <p class="split-target">
+                    This is your fullscreen story block. Use it to introduce vibe, mission, and energy.
+                    You can later replace this text with final copy, member lore, or timeline.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="slides" id="slides">
+        <div class="slides-top reveal-up">
+            <div>
+                <h2 class="title split-target" style="font-size:clamp(1.6rem,2.8vw,2.6rem)">Slides showcase</h2>
+                <p style="margin-top:6px;opacity:.88">80% height top carousel with click/move flow (1Variant-style).</p>
+            </div>
+            <div class="slide-controls">
+                <button class="slide-btn" id="slidePrev" aria-label="Previous slide">←</button>
+                <button class="slide-btn" id="slideNext" aria-label="Next slide">→</button>
+            </div>
+        </div>
+
+        <div class="carousel reveal-up">
+            <div class="carousel-track" id="carouselTrack">
+                <article class="slide"
+                    style="background-image:url('https://images.unsplash.com/photo-1521335629791-ce4aec67dd47?auto=format&fit=crop&w=1200&q=80')">
+                    <div class="slide-meta">
+                        <h3>Slide Template #1</h3>
+                        <p>Use this as your featured meetup announcement with key date and location highlights.</p>
+                    </div>
+                </article>
+                <article class="slide"
+                    style="background-image:url('https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=1200&q=80')">
+                    <div class="slide-meta">
+                        <h3>Slide Template #2</h3>
+                        <p>Microsoft-style card movement with arrows and trackpad/touch horizontal control.</p>
+                    </div>
+                </article>
+                <article class="slide"
+                    style="background-image:url('https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80')">
+                    <div class="slide-meta">
+                        <h3>Slide Template #3</h3>
+                        <p>Add sponsor info, travel details, links, or registration CTA in this panel.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="events">
+        <div class="container reveal-up">
+            <p class="kicker split-target">Events</p>
+            <h2 class="title split-target">Text blocks for gatherings, plans, and announcements.</h2>
+            <div class="events-grid">
+                <article class="event-card">
+                    <h4>Community Walk</h4>
+                    <p>Weekend city walk + photo point plan + chill post meetup.</p>
+                </article>
+                <article class="event-card">
+                    <h4>Open Art Evening</h4>
+                    <p>Share sketches, collect feedback, and prepare next collab drop.</p>
+                </article>
+                <article class="event-card">
+                    <h4>Suit Parade</h4>
+                    <p>Feature route, safe zones, and new-member intro activity.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="people" id="suiters">
+        <div class="container">
+            <p class="kicker reveal-up split-target">Suiters</p>
+
+            <article class="person-row reveal-up">
+                <div class="polaroid">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80"
+                        alt="Suiter Nova" />
+                    <span class="polaroid-name">Nova</span>
+                </div>
+                <div class="person-text">
+                    <h3 class="title split-target">Polaroid card layout with side text.</h3>
+                    <p>
+                        Left-to-right row. Add biography, costume details, and social links here.
+                        This area is intentionally spacious for personalized content.
+                    </p>
+                </div>
+            </article>
+
+            <article class="person-row reverse reveal-up">
+                <div class="polaroid">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80"
+                        alt="Suiter Orbit" />
+                    <span class="polaroid-name">Orbit</span>
+                </div>
+                <div class="person-text">
+                    <h3 class="title split-target">Alternating right-to-left row.</h3>
+                    <p>
+                        Repeat this block as much as needed: left-right then right-left for rhythm.
+                        It creates a clean visual reading flow for profile-heavy sections.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="people" id="admins">
+        <div class="container">
+            <p class="kicker reveal-up split-target">Admins & Interesting People</p>
+            <article class="person-row reveal-up">
+                <div class="polaroid">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=900&q=80"
+                        alt="Admin Lynx" />
+                    <span class="polaroid-name">Lynx Admin</span>
+                </div>
+                <div class="person-text">
+                    <h3 class="title split-target">Simple image + text side format.</h3>
+                    <p>
+                        Keep it informative and friendly: role, favorite activity, and community impact.
+                        This mirrors your requested alternating structure and can be copied quickly.
+                    </p>
+                </div>
+            </article>
+
+            <article class="person-row reverse reveal-up">
+                <div class="polaroid">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"
+                        alt="Community Icon" />
+                    <span class="polaroid-name">Pixel</span>
+                </div>
+                <div class="person-text">
+                    <h3 class="title split-target">Featured personality block.</h3>
+                    <p>
+                        Use this for artists, streamers, organizers, and iconic members people should know.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="aliases" id="aliases">
+        <div class="alias-grid reveal-up">
+            <article class="alias-card">
+                <h3 class="split-target">@NorthernPaw</h3>
+                <p>Street meetup coordinator with calm energy and map wizard skills.</p>
+            </article>
+            <article class="alias-card">
+                <h3 class="split-target">@SketchFang</h3>
+                <p>Art-night host, commission mentor, and community visual identity voice.</p>
+            </article>
+            <article class="alias-card">
+                <h3 class="split-target">@NightHowl</h3>
+                <p>Music curator and event atmosphere specialist for late-hour hangouts.</p>
+            </article>
+        </div>
+    </section>
+
+    <footer>
+        <h4 class="split-target">TFK — Built as a stylish full-page template</h4>
+        <p>Color palette will be swapped later as requested.</p>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger, SplitText);
+
+        const revealUp = gsap.utils.toArray('.reveal-up');
+        revealUp.forEach((el) => {
+            gsap.from(el, {
+                opacity: 0,
+                y: 48,
+                duration: 0.9,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 85%'
+                }
+            });
+        });
+
+        const revealLeft = gsap.utils.toArray('.reveal-left');
+        revealLeft.forEach((el) => {
+            gsap.from(el, {
+                opacity: 0,
+                x: -80,
+                duration: 0.9,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 85%'
+                }
+            });
+        });
+
+        const revealRight = gsap.utils.toArray('.reveal-right');
+        revealRight.forEach((el) => {
+            gsap.from(el, {
+                opacity: 0,
+                x: 80,
+                duration: 0.9,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 85%'
+                }
+            });
+        });
+
+        gsap.to('.hero-card', {
+            yPercent: -8,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+
+        const splitTargets = gsap.utils.toArray('.split-target');
+        splitTargets.forEach((target) => {
+            const split = new SplitText(target, { type: 'chars' });
+            gsap.from(split.chars, {
+                y: 14,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.01,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: target,
+                    start: 'top 88%'
+                }
+            });
+        });
+
+        const navbar = document.querySelector('.navbar');
+        ScrollTrigger.create({
+            start: 18,
+            end: 99999,
+            onUpdate: (self) => {
+                gsap.to(navbar, {
+                    padding: self.direction === 1 ? '9px 20px' : '12px 26px',
+                    duration: 0.2,
+                    overwrite: true
+                });
+            }
+        });
+
+        const carouselTrack = document.getElementById('carouselTrack');
+        const nextBtn = document.getElementById('slideNext');
+        const prevBtn = document.getElementById('slidePrev');
+
+        const scrollSlides = (direction = 1) => {
+            const step = carouselTrack.clientWidth * 0.84;
+            carouselTrack.scrollBy({ left: direction * step, behavior: 'smooth' });
+        };
+
+        nextBtn.addEventListener('click', () => scrollSlides(1));
+        prevBtn.addEventListener('click', () => scrollSlides(-1));
+
+        gsap.utils.toArray('.slide').forEach((slide, index) => {
+            gsap.from(slide, {
+                scale: 0.92,
+                opacity: 0,
+                duration: 0.85,
+                ease: 'power2.out',
+                delay: index * 0.08,
+                scrollTrigger: {
+                    trigger: slide,
+                    start: 'top 90%'
+                }
+            });
+        });
+
+        const hoverTargets = document.querySelectorAll('.polaroid');
+        hoverTargets.forEach((card) => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    y: -8,
+                    rotate: 0,
+                    duration: 0.25,
+                    ease: 'power2.out'
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                const isReverse = card.closest('.reverse');
+                gsap.to(card, {
+                    y: 0,
+                    rotate: isReverse ? 2 : -1.8,
+                    duration: 0.25,
+                    ease: 'power2.inOut'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
