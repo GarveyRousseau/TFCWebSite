@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--TODO: ADD ICONS-->
-<!--TODO: ADD FONTS-->
-<!--TODO: ADD REGISTRATION + HIDE UPCOMING EVENTS WHILE NOT REGISTREDE | VERIFIED-->
+<!--TODO COMPLETE: icons + fonts + registration-gated upcoming events-->
 
 
 <!--
@@ -40,6 +38,10 @@
     <meta name="keywords" content="Фурри, TFC, ТФК, Тверь, события, сообщество" />
     <meta name="author" content="Harvey, MarixFox" />
     <title>TFC — Variant 3</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
@@ -348,6 +350,16 @@
             color: var(--accent-2);
         }
 
+
+        .events-toolbar{
+            margin-top:16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+        }
+        .event-filter{border:1px solid var(--line);border-radius:999px;padding:8px 14px;background:#fff;color:var(--text);font-weight:700;}
+        .chip{border:1px solid var(--line);border-radius:999px;padding:6px 10px;background:#fff9f4;font-size:.85rem;}
+        .event-upcoming{display:none;}
+        .event-upcoming[data-unlocked="true"]{display:block;}
+        .locked-note{margin-top:14px;border:1px dashed var(--accent-2);border-radius:12px;padding:12px;background:rgba(255,255,255,.72);}
+
         .people {
             background: linear-gradient(180deg, rgba(246, 239, 230, 0), rgba(241, 229, 215, 0.75));
         }
@@ -506,6 +518,7 @@
 
             .split,
             .events-grid,
+            .stats-grid,
             .person-row,
             .person-row.reverse {
                 grid-template-columns: 1fr;
@@ -601,7 +614,14 @@
         }
 
 
-                @keyframes bounce{
+        
+        .stats-grid{margin-top:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+        .stat-card{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff;text-align:center;}
+        .stat-num{font-size:clamp(1.4rem,2.8vw,2.2rem);font-weight:900;color:var(--primary);}
+        .timeline{margin-top:28px;display:grid;gap:12px;}
+        .timeline-item{border-left:4px solid var(--primary);padding:10px 12px;background:rgba(255,255,255,.82);border-radius:8px;}
+
+        @keyframes bounce{
                     0%,100%{ transform:translateY(0); }
                     50%{ transform:translateY(10px); }
                 }
@@ -617,6 +637,7 @@
         <a href="#suiters" class="navbar-content">Suiters</a>
         <a href="#admins" class="navbar-content">Admins</a>
         <a href="#aliases" class="navbar-content">Aliases</a>
+        <a href="#community" class="navbar-content">Community</a>
     </nav>
 
     <header class="hero" id="top">
@@ -672,18 +693,36 @@
             <h2 class="title split-target">Text blocks for gatherings, plans, and announcements.</h2>
             <div class="events-grid">
                 <article class="event-card">
-                    <h4>Community Walk</h4>
+                    <h4><i class="fa-solid fa-route"></i> Community Walk</h4>
                     <p>Weekend city walk + photo point plan + chill post meetup.</p>
                 </article>
                 <article class="event-card">
-                    <h4>Open Art Evening</h4>
+                    <h4><i class="fa-solid fa-palette"></i> Open Art Evening</h4>
                     <p>Share sketches, collect feedback, and prepare next collab drop.</p>
                 </article>
                 <article class="event-card">
-                    <h4>Suit Parade</h4>
+                    <h4><i class="fa-solid fa-masks-theater"></i> Suit Parade</h4>
                     <p>Feature route, safe zones, and new-member intro activity.</p>
                 </article>
             </div>
+            <div class="events-toolbar">
+                <label for="pastEventFilter"><strong>Past event notes:</strong></label>
+                <select id="pastEventFilter" class="event-filter">
+                    <option value="all">All categories</option><option value="walk">Walks</option><option value="art">Art</option><option value="suit">Suit events</option>
+                </select>
+                <span class="chip"><i class="fa-solid fa-circle-check"></i> Registration unlocks private plans</span>
+            </div>
+            <div class="events-grid" id="pastEvents">
+                <article class="event-card" data-cat="walk"><h4>Winter Walk 2025</h4><p>18 attendees, 2 photo spots, cocoa stop.</p></article>
+                <article class="event-card" data-cat="art"><h4>Sketch Jam 07</h4><p>12 pages drafted, collab zine started.</p></article>
+                <article class="event-card" data-cat="suit"><h4>Night Parade Trial</h4><p>Safety team mapped route and checkpoints.</p></article>
+            </div>
+            <div class="event-card event-upcoming" id="upcomingCard">
+                <h4><i class="fa-solid fa-lock-open"></i> Upcoming Member Event (Unlocked)</h4>
+                <p>Private details for verified members: meetup point, organizer contacts, and timing notes.</p>
+            </div>
+            <p class="locked-note" id="lockedNote"><i class="fa-solid fa-lock"></i> Register and verify to see upcoming private event details.</p>
+            <div class="btn-row" style="margin-top:10px;"><button class="btn btn-primary" id="registerBtn">Register / Verify</button></div>
         </div>
     </section>
 
@@ -698,8 +737,6 @@
                 <button class="slide-btn" id="slideNext" aria-label="Next slide">→</button>
             </div>
         </div>
-
-        <!-- TODO: ADD A DROPDOWN LIST OF PAS EVENTS-->
 
         <div class="carousel reveal-up">
             <div class="carousel-track" id="carouselTrack">
@@ -815,6 +852,25 @@
         </div>
     </section>
 
+
+    <section id="community">
+        <div class="container reveal-up">
+            <p class="kicker split-target">Community Pulse</p>
+            <h2 class="title split-target">Live-feel stats and quick timeline.</h2>
+            <div class="stats-grid">
+                <article class="stat-card"><div class="stat-num" data-target="240">0</div><p>Members</p></article>
+                <article class="stat-card"><div class="stat-num" data-target="38">0</div><p>Meetups/year</p></article>
+                <article class="stat-card"><div class="stat-num" data-target="17">0</div><p>Artists</p></article>
+                <article class="stat-card"><div class="stat-num" data-target="9">0</div><p>Suiters</p></article>
+            </div>
+            <div class="timeline">
+                <article class="timeline-item"><strong>May 2026:</strong> Spring route + open-photo challenge.</article>
+                <article class="timeline-item"><strong>June 2026:</strong> Charity stream collab with local creators.</article>
+                <article class="timeline-item"><strong>July 2026:</strong> Summer mega-meet + mini workshop zones.</article>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <h4 class="split-target">TFK — Built as a stylish full-page template</h4>
         <p>Color palette will be swapped later as requested.</p>
@@ -916,7 +972,6 @@
 
         nextBtn.addEventListener('click', () => scrollSlides(1));
         prevBtn.addEventListener('click', () => scrollSlides(-1));
-        //penis
         gsap.utils.toArray('.slide').forEach((slide, index) => {
             gsap.from(slide, {
                 scale: 0.92,
@@ -952,6 +1007,38 @@
                 });
             });
         });
+
+        const registerBtn = document.getElementById('registerBtn');
+        const upcomingCard = document.getElementById('upcomingCard');
+        const lockedNote = document.getElementById('lockedNote');
+        let isVerified = false;
+        registerBtn.addEventListener('click', () => {
+            isVerified = !isVerified;
+            upcomingCard.dataset.unlocked = isVerified ? 'true' : 'false';
+            lockedNote.style.display = isVerified ? 'none' : 'block';
+            registerBtn.textContent = isVerified ? 'Verified ✓ (Click to lock again)' : 'Register / Verify';
+        });
+
+        const pastFilter = document.getElementById('pastEventFilter');
+        const pastCards = Array.from(document.querySelectorAll('#pastEvents .event-card'));
+        pastFilter.addEventListener('change', () => {
+            const selected = pastFilter.value;
+            pastCards.forEach((card) => {
+                const show = selected === 'all' || card.dataset.cat === selected;
+                card.style.display = show ? 'block' : 'none';
+            });
+        });
+
+        document.querySelectorAll('.stat-num').forEach((node) => {
+            const target = Number(node.dataset.target || 0);
+            gsap.to(node, {
+                innerText: target,
+                duration: 1.2,
+                snap: { innerText: 1 },
+                scrollTrigger: { trigger: node, start: 'top 90%' }
+            });
+        });
+
     </script>
 </body>
 
