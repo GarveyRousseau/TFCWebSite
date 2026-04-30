@@ -2,6 +2,7 @@
 <html lang="en">
 <!--TODO: ADD ICONS-->
 <!--TODO: ADD FONTS-->
+<!--TODO: ADD REGISTRATION + HIDE UPCOMING EVENTS WHILE NOT REGISTREDE | VERIFIED-->
 
 
 <!--
@@ -30,6 +31,7 @@
         },
         });
 -->
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -553,7 +555,7 @@
             align-items: center;
             z-index: 1;
             will-change: transform;
-            min-height: 10vh;
+            min-height: 15vh;
             border-radius: var(--radius);
 
         }
@@ -574,22 +576,35 @@
 
         .team__banner--en {
             top: 0;
-            left: -65%;
-            justify-content: end
+            left: -40%;
+            justify-content: center;
+            transform: rotate(4deg)
         }
 
         .team__banner--fr {
-            justify-content: start
+            justify-content: start;
+            transform: rotate(-5deg);
         }
 
         .team__banner-title {
-            font-weight: 700;
+            font-weight: 900;
             line-height: 1;
             white-space: nowrap;
             text-transform: uppercase;
-            margin: 0;
-            font-family: Panchang, sans-serif
+            margin: 0 5vh 0 5vh;
+            font-family: sans-serif;
+            font-size: 6vh;
+            transform: scaleX(1);
+            letter-spacing: 2px;
+
+
         }
+
+
+                @keyframes bounce{
+                    0%,100%{ transform:translateY(0); }
+                    50%{ transform:translateY(10px); }
+                }
     </style>
 </head>
 
@@ -597,8 +612,8 @@
     <nav class="navbar">
         <a href="#top" class="navbar-content">Home</a>
         <a href="#story" class="navbar-content">Story</a>
-        <a href="#slides" class="navbar-content">Slides</a>
         <a href="#events" class="navbar-content">Events</a>
+        <a href="#slides" class="navbar-content">Slides</a>
         <a href="#suiters" class="navbar-content">Suiters</a>
         <a href="#admins" class="navbar-content">Admins</a>
         <a href="#aliases" class="navbar-content">Aliases</a>
@@ -619,7 +634,7 @@
             </div>
         </div>
         <div class="scroll-down" onclick="scrollToContent()">
-            scroll ↓ scroll
+            <a style=" text-decoration: none; color: var(--text-dark); animation: bounce 1s ease 2s;" href="#story">scroll ↓ scroll</a>
         </div>
     </header>
 
@@ -651,6 +666,27 @@
         </div>
     </section>
 
+    <section id="events">
+        <div class="container reveal-up">
+            <p class="kicker split-target">Events</p>
+            <h2 class="title split-target">Text blocks for gatherings, plans, and announcements.</h2>
+            <div class="events-grid">
+                <article class="event-card">
+                    <h4>Community Walk</h4>
+                    <p>Weekend city walk + photo point plan + chill post meetup.</p>
+                </article>
+                <article class="event-card">
+                    <h4>Open Art Evening</h4>
+                    <p>Share sketches, collect feedback, and prepare next collab drop.</p>
+                </article>
+                <article class="event-card">
+                    <h4>Suit Parade</h4>
+                    <p>Feature route, safe zones, and new-member intro activity.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <section class="slides" id="slides">
         <div class="slides-top reveal-up">
             <div>
@@ -662,8 +698,8 @@
                 <button class="slide-btn" id="slideNext" aria-label="Next slide">→</button>
             </div>
         </div>
- 
-<!-- TODO: ADD A DROPDOWN LIST OF PAS EVENTS-->
+
+        <!-- TODO: ADD A DROPDOWN LIST OF PAS EVENTS-->
 
         <div class="carousel reveal-up">
             <div class="carousel-track" id="carouselTrack">
@@ -687,27 +723,6 @@
                         <h3>Slide Template #3</h3>
                         <p>Add sponsor info, travel details, links, or registration CTA in this panel.</p>
                     </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section id="events">
-        <div class="container reveal-up">
-            <p class="kicker split-target">Events</p>
-            <h2 class="title split-target">Text blocks for gatherings, plans, and announcements.</h2>
-            <div class="events-grid">
-                <article class="event-card">
-                    <h4>Community Walk</h4>
-                    <p>Weekend city walk + photo point plan + chill post meetup.</p>
-                </article>
-                <article class="event-card">
-                    <h4>Open Art Evening</h4>
-                    <p>Share sketches, collect feedback, and prepare next collab drop.</p>
-                </article>
-                <article class="event-card">
-                    <h4>Suit Parade</h4>
-                    <p>Feature route, safe zones, and new-member intro activity.</p>
                 </article>
             </div>
         </div>
@@ -863,8 +878,8 @@
 
         const splitTargets = gsap.utils.toArray('.split-target');
         splitTargets.forEach((target) => {
-            const split = new SplitText(target, { type: 'words' });
-            gsap.from(split.words, {
+            const split = new SplitText(target, { type: 'chars' });
+            gsap.from(split.chars, {
                 y: 14,
                 opacity: 0,
                 duration: 0.45,
@@ -901,7 +916,7 @@
 
         nextBtn.addEventListener('click', () => scrollSlides(1));
         prevBtn.addEventListener('click', () => scrollSlides(-1));
-//penis
+        //penis
         gsap.utils.toArray('.slide').forEach((slide, index) => {
             gsap.from(slide, {
                 scale: 0.92,
