@@ -272,7 +272,7 @@
         }
 
         .carousel {
-            width: min(100%, 1120px);
+            width: min(100%, var(--content-max));
             margin: 0 auto;
             overflow: hidden;
             border-radius: 14px;
@@ -280,6 +280,36 @@
             box-shadow: var(--shadow);
             background: rgba(255, 255, 255, 0.7);
             padding: 14px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .carousel-divider {
+            display: flex;
+            background: var(--bg-soft);
+            width: 7px;
+            border-radius: var(--radius);
+
+        }
+
+        .carousel-old {
+                background: var(--bg);
+                border-radius: 12px;
+                padding: 15px;
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                height: auto;
+                margin: 0 0 0 15px;
+        }
+
+        .meetup-item {
+            padding: 10px;
+            margin-bottom: 8px;
+            background: var(--bg-soft);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
         }
 
         .carousel-track {
@@ -289,9 +319,12 @@
             gap: 14px;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
-            padding-bottom: 10px;
+            padding-bottom: 0px;
             scrollbar-width: thin;
             scroll-behavior: smooth;
+            margin: 0 15px 0 0;
+            flex: 4;
+
         }
 
         .slide {
@@ -739,22 +772,38 @@
         </div>
 
         <div class="carousel reveal-up">
+           
             <div class="carousel-track" id="carouselTrack">
-                <article class="slide"
+
+                <article class="slide" data-id="1"
                     style="background-image:url('https://images.unsplash.com/photo-1521335629791-ce4aec67dd47?auto=format&fit=crop&w=1200&q=80')">
                     <div class="slide-meta">
                         <h3>Slide Template #1</h3>
                         <p>Use this as your featured meetup announcement with key date and location highlights.</p>
                     </div>
                 </article>
-                <article class="slide"
+                <article class="slide" data-id="2"
                     style="background-image:url('https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=1200&q=80')">
                     <div class="slide-meta">
                         <h3>Slide Template #2</h3>
                         <p>Microsoft-style card movement with arrows and trackpad/touch horizontal control.</p>
                     </div>
                 </article>
-                <article class="slide"
+                <article class="slide" data-id="3"
+                    style="background-image:url('https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80')">
+                    <div class="slide-meta">
+                        <h3>Slide Template #3</h3>
+                        <p>Add sponsor info, travel details, links, or registration CTA in this panel.</p>
+                    </div>
+                </article>
+                <article class="slide" data-id="4"
+                    style="background-image:url('https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80')">
+                    <div class="slide-meta">
+                        <h3>Slide Template #3</h3>
+                        <p>Add sponsor info, travel details, links, or registration CTA in this panel.</p>
+                    </div>
+                </article>
+                <article class="slide" data-id="5"
                     style="background-image:url('https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80')">
                     <div class="slide-meta">
                         <h3>Slide Template #3</h3>
@@ -762,6 +811,19 @@
                     </div>
                 </article>
             </div>
+            <div class="carousel-divider"></div>
+            <div class="carousel-old">
+                <h4>Past Meetups</h4>
+                <div class="meetup-list">
+                
+                    <div class="meetup-item reveal-up split-target" data-id="6">Meetup #6</div>
+                    <div class="meetup-item reveal-up split-target" data-id="7">Meetup #7</div>
+                    <div class="meetup-item reveal-up split-target" data-id="8">Meetup #8</div>
+                    <div class="meetup-item reveal-up split-target" data-id="9">Meetup #9</div>
+                
+                </div>
+            </div>
+
         </div>
     </section>
 
