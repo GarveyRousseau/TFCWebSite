@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+65;80;35M65;80;35M65;80;35M65;80;35M65;80;35M65;80;35M65;80;35M65;80;35M65;80;35M65;80;35M65;80;35M65;80;35M65;80;35M65;80;35M65;80;35M65;80;35M65;80;35M65;80;35M65;80;35M65;80;35M64;80;35M64;80;27M64;80;27M64;80;27M64;80;27M64;80;27M64;80;27M64;80;27M64;80;27M64;80;27M65;80;27M65;80;27M65;80;27M65;80;27M64;80;27M64;80;27M65;80;27M65;80;27M64;80;27M64;80;27M65;80;27M65;80;27M<!DOCTYPE html>
 <html lang="en">
 <!--TODO COMPLETE: icons + fonts + registration-gated upcoming events-->
 
@@ -539,7 +539,7 @@
             border: 1px solid var(--line);
             border-radius: 12px;
             overflow: hidden;
-            flex-direction: row;
+
             background: rgba(255, 255, 255, 0.72);
         }
 
@@ -608,21 +608,6 @@
                 order: initial;
                 text-align: left;
             }
-
-            .alias-grid {
-                flex-direction: column;
-            }
-
-            #alias-1,
-            #alias-2,
-            #alias-3 {
-                z-index: 1;
-                clip-path: none;
-                position: relative;
-                margin: 0;
-            }
-
-
         }
 
         .team__banners-container {
@@ -1048,6 +1033,7 @@
         <h4 class="split-target">TFK — Built as a stylish full-page template</h4>
         <p>Color palette will be swapped later as requested.</p>
     </footer>
+
     <script>
         gsap.registerPlugin(ScrollTrigger, SplitText);
 
