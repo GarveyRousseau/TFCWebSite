@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!--TODO (NOT NOW!): make admin panel to add events\people\photos-->
+<!--TODO: (NOT NOW): add more animations-->
+<!--TODO (NOT NOW!): make reg\auth-->
 <!--TODO (NOT NOW!): PARALAX-->
 
 
@@ -51,6 +55,8 @@
     <script src="https://kit.fontawesome.com/be4624f477.js" crossorigin="anonymous"></script>
 
     <style>
+
+        /*TODO: REDO COLORS!*/
         :root {
             --primary: #ff5a1f;
             --primary-dark: #e34b16;
@@ -329,6 +335,15 @@
 
         }
 
+        .links-nodeco {
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .links-linedeco {
+            color: var(--text-dark);
+        }
+
         .slide {
             scroll-snap-align: start;
             min-height: clamp(260px, 62vh, 620px);
@@ -587,7 +602,7 @@
             margin-top: 8px;
             font-size: 0.95rem;
         }
-
+            /*TODO: adapt for tablets and phones*/
         @media (max-width: 960px) {
 
             .navbar {
@@ -855,6 +870,8 @@
     </section>
 
     <section class="slides" id="slides">
+
+        <!--TODO (NOT NOW!): make commenttary section-->
         <!--TODO: Make that slides (events) can be opened on click and contain photos from an event text comments
          etc also make that if new event added (later will have admin panel)
          data-id shifts and if data-id >5 move it to Meetup item-->
@@ -924,7 +941,7 @@
 
         </div>
     </section>
-
+<!--TODO: make that better-->
     <section class="people" id="suiters">
         <div class="container">
             <p class="kicker reveal-up split-target">Suiters</p>
@@ -1051,8 +1068,49 @@
 
     <footer>
         <!-- TODO: Finish a footer-->
-        <h4 class="split-target">TFK — Built as a stylish full-page template</h4>
-        <p>Color palette will be swapped later as requested.</p>
+
+        <!-- TODO: do those in css
+        .footer-content
+
+        #footer-left
+        #footer-center
+        #footer-right
+
+        #footer-contactinfo
+        #footer-links
+
+        #footer-logo
+
+        .date
+        -->
+
+        <!--TODO: fill the links-->
+        <div class="footer-content">
+            <div id="footer-left">
+                <div id="footer-contactinfo">
+                    <h4>Contact us:</h4>
+                    <a class="links-nodeco " href="#">MarixFox - Founder</a>
+                    <a class="links-nodeco " href="#">HarveyRousseau - Website coder</a>
+                </div>
+                <div id="footer-links">
+                    <h4>Our allies:</h4>
+                    <a class="links-nodeco " href="#">NB - Neformal Base</a>
+                    <a class="links-nodeco " href="#">FunCo - </a>
+                    <a class="links-nodeco " href="#">MCSMP (HarveyRousseau) - Cozy minecraft server for everyone</a>
+                </div>
+            </div>
+            <div id="footer-left">
+                <p>| Coded by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="#">Harvey </a>| <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="#"> Owned by MarixFox </a>|</p>
+                <p>&copy; Licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1">CC-BY 4.0</a> - 2026 </p>
+            </div>
+            <div class="footer-right">
+                <div id="footer-logo">
+                    <img src="#">
+                    <h4 class="date">2026</h4>
+                </div>
+            </div>
+
+        </div>
     </footer>
     <script>
         gsap.registerPlugin(ScrollTrigger, SplitText);
