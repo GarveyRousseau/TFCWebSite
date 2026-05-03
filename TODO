@@ -1,7 +1,7 @@
 =========================================HOT TODOS=========================================
-<!-- TODO (NOW): Finish a footer-->
+<!-- TODO (NOW!): Finish a footer-->
 
-<!-- TODO (NOW): do those in css
+<!-- TODO (NOW!): do those in css
 .footer-content
 
 #footer-left
@@ -17,7 +17,7 @@
 -->
 
 =========================================NORMAL TODOS=========================================
-/*TODO: REDO COLORS!*/
+<!--TODO: REDO COLORS!-->
 <!--TODO:make events full block be for future events and full block will only be revealed if youre a verified person (As for now button click will do)-->
 <!--TODO: Make that slides (events) can be opened on click and contain photos from an event text comments
 etc also make that if new event added (later will have admin panel)
@@ -25,22 +25,23 @@ data-id shifts and if data-id >5 move it to Meetup item-->
 <!--TODO: make people better-->
 
 <!--TODO: fill the links-->
+<!--TODO: add banner animations-->
 
 =========================================COLD TODOS=========================================
 
 <!--TODO (NOT NOW!): make admin panel to add events\people\photos-->
-<!--TODO (NOT NOW): add more animations-->
+<!--TODO (NOT NOW!): add more animations-->
 <!--TODO (NOT NOW!): make reg\auth-->
 <!--TODO (NOT NOW!): PARALAX-->
-/*TODO (NOT NOW): adapt for tablets and phones*/
+<!--TODO (NOT NOW!): adapt for tablets and phones-->
 <!--TODO (NOT NOW!): make commenttary section-->
-<!--TODO (NOT NOW): Add kicker for Aliases - <p class="kicker reveal-up split-target">Aliases</p> -->
-<!-- PARALAX TEMPLATE
+<!--TODO (NOT NOW!): Add kicker for Aliases - <p class="kicker reveal-up split-target">Aliases</p> -->
+<!--TODO (NOT NOW!): PARALAX TEMPLATE
 
-      #parallax-1 { background-image: url("https://raw.githubusercontent.com/GarveyRousseau/Websiteproject/refs/heads/main/BG-NEW/layer1-new.png"); }
-      #parallax-2 { background-image: url("https://raw.githubusercontent.com/GarveyRousseau/Websiteproject/refs/heads/main/BG-NEW/layer2-new.png"); }
-      #parallax-3 { background-image: url("https://raw.githubusercontent.com/GarveyRousseau/Websiteproject/refs/heads/main/BG-NEW/layer3-new.png"); }
-      #parallax-4 { background-image: url("https://raw.githubusercontent.com/GarveyRousseau/Websiteproject/refs/heads/main/BG-NEW/layer4-new.png"); }
+      #parallax-1 { background-image: url("#"); }
+      #parallax-2 { background-image: url("#"); }
+      #parallax-3 { background-image: url("#"); }
+      #parallax-4 { background-image: url("#"); }
 
 
               <div id="parallax-background-scene-1">
