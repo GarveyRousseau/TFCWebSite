@@ -60,7 +60,6 @@
     <script src="https://kit.fontawesome.com/be4624f477.js" crossorigin="anonymous"></script>
 
     <style>
-
         /*TODO: REDO COLORS!*/
         :root {
             --primary: #ff5a1f;
@@ -595,6 +594,57 @@
             animation: bounce 1.5s infinite;
         }
 
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        #footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: start;
+            text-align: left;
+        }
+
+        #footer-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            bottom: 0px;
+        }
+
+        #footer-right {
+            display: flex;
+            justify-content: flex-end;
+
+        }
+
+
+
+        #footer-contactinfo {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        #footer-links {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #footer-logo {
+            bottom: 0px;
+            position: absolute;
+            right: 15px;
+        }
+
+        .date {}
+
         footer {
             padding: 24px 24px 40px;
             text-align: center;
@@ -607,7 +657,8 @@
             margin-top: 8px;
             font-size: 0.95rem;
         }
-            /*TODO: adapt for tablets and phones*/
+
+        /*TODO: adapt for tablets and phones*/
         @media (max-width: 960px) {
 
             .navbar {
@@ -948,7 +999,7 @@
 
         </div>
     </section>
-<!--TODO: make that better-->
+    <!--TODO: make that better-->
     <section class="people" id="suiters">
         <div class="container">
             <p class="kicker reveal-up split-target">Suiters</p>
@@ -1103,12 +1154,15 @@
                     <h4>Our allies:</h4>
                     <a class="links-nodeco " href="#">NB - Neformal Base</a>
                     <a class="links-nodeco " href="#">FunCo - </a>
-                    <a class="links-nodeco " href="#">MCSMP (HarveyRousseau) - Cozy minecraft server for everyone</a>
+                    <a class="links-nodeco " href="#">MCSMP - Cozy minecraft server </a>
                 </div>
             </div>
-            <div id="footer-left">
-                <p>| Coded by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="#">Harvey </a>| <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="#"> Owned by MarixFox </a>|</p>
-                <p>&copy; Licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1">CC-BY 4.0</a> - 2026 </p>
+            <div id="footer-center">
+                <p>| Coded by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="#">Harvey</a> |
+                    Owned by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="#">MarixFox</a>
+                    |</p>
+                <p>&copy; Licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1">CC-BY
+                        4.0</a> - 2026 </p>
             </div>
             <div class="footer-right">
                 <div id="footer-logo">
