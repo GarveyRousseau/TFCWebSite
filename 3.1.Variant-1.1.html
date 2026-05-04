@@ -757,7 +757,15 @@
 
         }
 
-
+        .divider-horisontal {
+            display: flex;
+            background-image: linear-gradient(90deg, var(--text-dark), var(--bg), transparent);
+            height: 3px;
+            z-index: 3;
+            position: relative;
+            width: 100%;
+            border-radius: var(--radius);
+        }
 
         .stats-grid {
             margin-top: 20px;
@@ -1129,21 +1137,23 @@
             <div id="footer-left">
                 <div id="footer-contactinfo">
                     <h4>Contact us:</h4>
+                    <div class="divider-horisontal"></div>
                     <a class="links-nodeco " href="#">MarixFox - Founder</a>
                     <a class="links-nodeco " href="#">HarveyRousseau - Website coder</a>
                 </div>
                 <div id="footer-links">
                     <h4>Our allies:</h4>
+                    <div class="divider-horisontal" ></div>
                     <a class="links-nodeco " href="#">NB - Neformal Base</a>
                     <a class="links-nodeco " href="#">FunCo - </a>
                     <a class="links-nodeco " href="#">MCSMP - Cozy minecraft server </a>
                 </div>
             </div>
             <div id="footer-center">
-                <p>| Coded by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="#">Harvey</a> |
-                    Owned by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="#">MarixFox</a>
+                <p>| Coded by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="#" style="color: var(--text);">Harvey</a> |
+                    Owned by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="#" style="color: var(--text);">MarixFox</a>
                     |</p>
-                <p>&copy; Licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1">CC-BY
+                <p>&copy; Licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" style="color: var(--text)">CC-BY
                         4.0</a> - 2026 </p>
             </div>
             <div class="footer-right">
