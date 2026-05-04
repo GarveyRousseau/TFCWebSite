@@ -104,7 +104,7 @@
             inset: 0;
             pointer-events: none;
             background: radial-gradient(circle at 10% 15%, rgba(255, 90, 31, 0.12), transparent 32%),
-                        radial-gradient(circle at 85% 80%, rgba(255, 155, 95, 0.12), transparent 38%);
+                radial-gradient(circle at 85% 80%, rgba(255, 155, 95, 0.12), transparent 38%);
             z-index: -1;
         }
 
@@ -647,7 +647,7 @@
             margin-top: 12px;
             padding: 6px 12px;
             border-radius: 999px;
-            border: 1px solid rgba(255,255,255,.25);
+            border: 1px solid rgba(255, 255, 255, .25);
             color: var(--footer-text);
             font-size: .82rem;
             letter-spacing: .06em;
@@ -657,7 +657,7 @@
         .footer-bottom {
             margin-top: 18px;
             padding-top: 14px;
-            border-top: 1px solid rgba(255,255,255,.2);
+            border-top: 1px solid rgba(255, 255, 255, .2);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -754,6 +754,8 @@
             pointer-events: none;
             z-index: 0;
             margin: 0;
+            overflow: hidden;
+
 
         }
 
@@ -767,6 +769,8 @@
         .team__banner--fr {
             justify-content: start;
             transform: rotate(-5deg);
+            overflow: hidden;
+
         }
 
         .team__banner-title {
@@ -781,6 +785,10 @@
             letter-spacing: 2px;
 
 
+        }
+
+        #banner {
+            overflow: hidden;
         }
 
         .divider-horisontal {
@@ -1190,7 +1198,8 @@
 
             <div class="footer-bottom">
                 <p>Built by Harvey · Managed by MarixFox</p>
-                <p>&copy; 2026 · <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" class="footer-link">CC-BY 4.0 License</a></p>
+                <p>&copy; 2026 · <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1"
+                        class="footer-link">CC-BY 4.0 License</a></p>
             </div>
         </div>
     </footer>
