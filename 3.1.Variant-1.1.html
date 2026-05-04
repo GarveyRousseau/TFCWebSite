@@ -77,6 +77,9 @@
             --accent-2: #ff9b5f;
             --radius: 20px;
             --content-max: 1600px;
+            --footer-bg: #2d211c;
+            --footer-text: #f8eee3;
+            --footer-muted: #d7c2ad;
         }
 
         * {
@@ -93,6 +96,16 @@
             background: var(--bg);
             color: var(--text);
             scroll-behavior: smooth;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at 10% 15%, rgba(255, 90, 31, 0.12), transparent 32%),
+                        radial-gradient(circle at 85% 80%, rgba(255, 155, 95, 0.12), transparent 38%);
+            z-index: -1;
         }
 
         img {
@@ -595,62 +608,67 @@
         }
 
         .footer-content {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr 0.8fr;
+            gap: 28px;
+            align-items: start;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .footer-col p {
+            margin: 0;
+            color: var(--footer-muted);
+        }
+
+        .footer-list {
+            margin-top: 12px;
+            display: grid;
+            gap: 8px;
+        }
+
+        .footer-link {
+            color: var(--footer-text);
+            text-decoration: none;
+            opacity: 0.88;
+            transition: opacity .2s ease, transform .2s ease;
+        }
+
+        .footer-link:hover {
+            opacity: 1;
+            transform: translateX(4px);
+        }
+
+        .footer-badge {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,.25);
+            color: var(--footer-text);
+            font-size: .82rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        .footer-bottom {
+            margin-top: 18px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255,255,255,.2);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 20px;
-            position: relative;
-        }
-
-        #footer-left {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            justify-content: start;
-            text-align: left;
-        }
-
-        #footer-center {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            bottom: 0px;
-        }
-
-        #footer-right {
-            display: flex;
-            justify-content: flex-end;
-
-        }
-
-        #footer-contactinfo {
-            display: flex;
-            flex-direction: column;
-
-        }
-
-        #footer-links {
-            display: flex;
-            flex-direction: column;
-        }
-
-        #footer-logo {
-            bottom: 0px;
-            position: absolute;
-            right: 15px;
-        }
-
-
-        footer {
-            padding: 24px 24px 40px;
-            text-align: center;
-            border-top: 1px solid var(--line);
-            background: rgba(255, 255, 255, 0.75);
+            flex-wrap: wrap;
+            gap: 8px;
+            color: var(--footer-muted);
+            font-size: .93rem;
         }
 
         footer p {
-            opacity: 0.82;
+            opacity: 0.92;
             margin-top: 8px;
             font-size: 0.95rem;
         }
@@ -690,6 +708,14 @@
                 margin: 0;
             }
 
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
 
         }
 
@@ -1130,39 +1156,42 @@
     </section>
 
     <footer>
-        <!-- TODO: Finish a footer-->
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>TFC Contacts</h4>
+                    <p>Feel free to ping organizers for collabs, events, or support.</p>
+                    <div class="footer-list">
+                        <a class="footer-link" href="#">MarixFox — Founder</a>
+                        <a class="footer-link" href="#">HarveyRousseau — Web Creator</a>
+                        <a class="footer-link" href="#">@TFC_community — News Channel</a>
+                    </div>
+                </div>
 
-        <!--TODO: fill the links-->
-        <div class="footer-content">
-            <div id="footer-left">
-                <div id="footer-contactinfo">
-                    <h4>Contact us:</h4>
-                    <div class="divider-horisontal"></div>
-                    <a class="links-nodeco " href="#">MarixFox - Founder</a>
-                    <a class="links-nodeco " href="#">HarveyRousseau - Website coder</a>
+                <div class="footer-col">
+                    <h4>Partners & Friends</h4>
+                    <div class="footer-list">
+                        <a class="footer-link" href="#">NB — Neformal Base</a>
+                        <a class="footer-link" href="#">FunCo — Creative Cluster</a>
+                        <a class="footer-link" href="#">MCSMP — Cozy Minecraft Server</a>
+                    </div>
+                    <span class="footer-badge">Open for collaborations</span>
                 </div>
-                <div id="footer-links">
-                    <h4>Our allies:</h4>
-                    <div class="divider-horisontal" ></div>
-                    <a class="links-nodeco " href="#">NB - Neformal Base</a>
-                    <a class="links-nodeco " href="#">FunCo - </a>
-                    <a class="links-nodeco " href="#">MCSMP - Cozy minecraft server </a>
-                </div>
-            </div>
-            <div id="footer-center">
-                <p>| Coded by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="#" style="color: var(--text);">Harvey</a> |
-                    Owned by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="#" style="color: var(--text);">MarixFox</a>
-                    |</p>
-                <p>&copy; Licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" style="color: var(--text)">CC-BY
-                        4.0</a> - 2026 </p>
-            </div>
-            <div class="footer-right">
-                <div id="footer-logo">
-                    <img src="#">
-                    <h4 >2026</h4>
+
+                <div class="footer-col">
+                    <h4>Quick Jump</h4>
+                    <div class="footer-list">
+                        <a class="footer-link" href="#events">Upcoming Events</a>
+                        <a class="footer-link" href="#slides">Gallery Slides</a>
+                        <a class="footer-link" href="#community">Community Pulse</a>
+                    </div>
                 </div>
             </div>
 
+            <div class="footer-bottom">
+                <p>Built by Harvey · Managed by MarixFox</p>
+                <p>&copy; 2026 · <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" class="footer-link">CC-BY 4.0 License</a></p>
+            </div>
         </div>
     </footer>
     <script>
